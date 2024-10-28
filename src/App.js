@@ -26,7 +26,7 @@ function App() {
             <p>
               You're invited to Tabsforum Expo!{' '}
               <a className='underline' href='www.tabsform.com'>
-                Register Now
+                Register Now📣
               </a>
             </p>
           </div>
