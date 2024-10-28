@@ -1,6 +1,5 @@
 import './App.css'
 import logo from './expand.png'
-import React, { useEffect, useState } from 'react'
 import video from './video/trailer1.mp4'
 import airbnb from './images/airbnb-logo.svg'
 import loewe from './images/Loewe.svg'
@@ -10,14 +9,6 @@ import cartier from './images/Cartier.svg'
 import image from './images/image2.png'
 
 function App() {
-  const possibleVideos = [video, video]
-  const [videoSrc, setVideoSrc] = useState('')
-
-  useEffect(() => {
-    const randomVideo =
-      possibleVideos[Math.floor(Math.random() * possibleVideos.length)]
-    setVideoSrc(randomVideo)
-  }, [possibleVideos])
   return (
     <>
       <div className='block isolate'>
@@ -83,7 +74,7 @@ function App() {
                   <div className='flex-1 max-w-xl h-auto mt-0  mr-8'>
                     <video
                       className='my-video'
-                      src={videoSrc}
+                      src={video}
                       loop
                       autoPlay
                       muted
