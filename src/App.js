@@ -15,9 +15,9 @@ function App() {
         <main className=''>
           <div className='bg-slate-500 justify-center text-center text-slate-50 font-medium p-5'>
             <p>
-              You're invited to Tabsforum Expo!{' '}
+              You're invited to Tabsforum Expo! 📣
               <a className='underline' href='www.tabsform.com'>
-                Register Now📣
+                Register Now
               </a>
             </p>
           </div>
