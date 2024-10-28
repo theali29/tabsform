@@ -17,7 +17,7 @@ function App() {
     const randomVideo =
       possibleVideos[Math.floor(Math.random() * possibleVideos.length)]
     setVideoSrc(randomVideo)
-  }, [])
+  }, [possibleVideos])
   return (
     <>
       <div className='block isolate'>
@@ -34,7 +34,7 @@ function App() {
             <div className='m-auto flex justify-between min-h-16 pl-4 pr-4 items-center  flex-grow p-5'>
               <div className='flex'>
                 <img src={logo} alt='Brand Logo' width={33} height={18} />
-                <a href=''>
+                <a href='https://tabsform.com'>
                   <span className='font-normal ml-2 text-3xl font-pacifico'>
                     Tabs
                   </span>
@@ -60,11 +60,11 @@ function App() {
               </ul>
               <div className='flex justify-end items-center gap-4'>
                 <div className='flex-col inline-flex gap-4 max-w-full'>
-                  <a href=''>Log in</a>
+                  <a href='https://login.com'>Log in</a>
                 </div>
                 <div className='flex-col inline-flex gap-4 max-w-full'>
                   <a
-                    href=''
+                    href='https://signup.com'
                     className='inline-block cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl  py-2 px-4 '
                   >
                     Sign Up
@@ -105,7 +105,7 @@ function App() {
                     </p>
                     <div className='flex-col inline-flex gap-4 max-w-full mt-10'>
                       <a
-                        href=''
+                        href='https://free.com'
                         className='inline-block cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl  py-2 px-4 '
                       >
                         Get Started-it's free
@@ -164,7 +164,7 @@ function App() {
                       <div className='flex flex-row w-auto gap-6 content-center'>
                         <div className='flex-col inline-flex items-stretch gap-4 max-w-full min-w-32'>
                           <a
-                            href=''
+                            href='https://read.com'
                             className='inline-block text-center cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
                           >
                             Read on
@@ -239,14 +239,14 @@ function App() {
                 <div className='flex justify-center items-center gap-4'>
                   <div className='flex-col inline-flex gap-4 max-w-full'>
                     <a
-                      href=''
+                      href='https://signup.com'
                       className='inline-block cursor-pointer font-medium border-solid border-2 border-white text-black bg-white rounded-xl  py-2 px-10'
                     >
                       Sign Up
                     </a>
                   </div>
                   <div className='flex-col inline-flex gap-4 max-w-full underline'>
-                    <a href=''>Compare plans</a>
+                    <a href='https:/plans.com'>Compare plans</a>
                   </div>
                 </div>
               </div>
@@ -263,7 +263,7 @@ function App() {
                     Product
                   </h3>
                   <div>
-                    <a href='' className='mb-4 block'>
+                    <a href='https://plans.com' className='mb-4 block'>
                       <span>Pricing</span>
                     </a>
                     <div>
@@ -488,13 +488,13 @@ function App() {
                     Resources
                   </h3>
                   <div>
-                    <a href='' className='mb-4 block'>
+                    <a href='https:blog.com' className='mb-4 block'>
                       <span>Blog</span>
                     </a>
-                    <a href='' className='mb-4 block'>
+                    <a href='https://center.com' className='mb-4 block'>
                       <span>Help center</span>
                     </a>
-                    <a href='' className='mb-4 block'>
+                    <a href='https://community.com' className='mb-4 block'>
                       <span>Community</span>
                     </a>
                     <div>
@@ -526,10 +526,10 @@ function App() {
                     Get to know us
                   </h3>
                   <div>
-                    <a href='' className='mb-4 block'>
+                    <a href='https://aboutus.com' className='mb-4 block'>
                       <span>About us</span>
                     </a>
-                    <a href='' className='mb-4 block'>
+                    <a href='https://brand.com' className='mb-4 block'>
                       <span>Brand</span>
                     </a>
 
@@ -696,13 +696,13 @@ function App() {
                     Cookie settings
                   </button>
                   <a
-                    href=''
+                    href='https://cookie.com'
                     className='underline mb-0 block transition-opacity text-inherit'
                   >
                     Check our Cookie Policy to delete cookies
                   </a>
                   <a
-                    href=''
+                    href='https"//abuse.com'
                     className='underline mb-0 block transition-opacity text-inherit'
                   >
                     Report abuse
