@@ -7,12 +7,15 @@ import sugarcrm from './images/sugarcrm.svg'
 import klaviyo from './images/Klaviyo.svg'
 import cartier from './images/Cartier.svg'
 import image from './images/image2.png'
+import React, { useState } from 'react'
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleMenu = () => setIsOpen(!isOpen)
   return (
     <>
-      <div className='block isolate'>
-        <main className=''>
+      <div className='block isolate '>
+        <main className='min-h-screen w-fit'>
           <div className='bg-slate-500 justify-center text-center text-slate-50 font-medium p-5'>
             <p>
               You're invited to Tabsforum Expo! 📣
@@ -21,8 +24,8 @@ function App() {
               </a>
             </p>
           </div>
-          <div className='-mb-24'>
-            <div className='m-auto flex justify-between min-h-16 pl-4 pr-4 items-center  flex-grow p-5'>
+          <div className='navbar-container sticky top-0 bg-white z-50 -mb-24'>
+            <div className=' m-auto flex justify-between min-h-16 pl-4 pr-4 items-center  flex-grow p-5'>
               <div className='flex'>
                 <img src={logo} alt='Brand Logo' width={33} height={18} />
                 <a href='https://tabsform.com'>
@@ -31,36 +34,110 @@ function App() {
                   </span>
                 </a>
               </div>
+              <div className='lg:hidden max-w-full order-1 relative'>
+                <input
+                  type='checkbox'
+                  className='absolute m-0 bg-none appearance-none border-none cursor-pointer hidden'
+                />
+                <button
+                  aria-expanded={isOpen}
+                  aria-label={
+                    isOpen
+                      ? 'Close mobile navigation menu'
+                      : 'Open mobile navigation menu'
+                  }
+                  className='border-none bg-none cursor-pointer p-0 relative text-inherit w-14 h-18 -mr-4'
+                  onClick={toggleMenu}
+                >
+                  {/* Close Menu SVG */}
+                  <svg
+                    id='close-menu-svg'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='24'
+                    height='24'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    className={`absolute inset-0 mx-auto my-auto transition-opacity duration-200 ease-in-out ${
+                      isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                    }`}
+                  >
+                    <path
+                      d='M5 5L19 19M19 5L5 19'
+                      stroke='currentColor'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                    />
+                  </svg>
 
-              <ul className='flex list-none p-0 m-0 ps-10  ms-0 me-0'>
-                <li className='px-4 py-1 max-w-md w-auto m-auto my-0 flex flex-col leading-relaxed'>
-                  Products
+                  {/* Open Menu SVG */}
+                  <svg
+                    id='open-menu-svg'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='24'
+                    height='24'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    className={`absolute inset-0 mx-auto my-auto transition-opacity duration-200 ease-in-out ${
+                      isOpen ? 'opacity-0 invisible' : 'opacity-100 visible'
+                    }`}
+                  >
+                    <path
+                      stroke='currentColor'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth='2'
+                      d='M4 7h16M4 12.5h16M4 18h16'
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <ul
+                className={`absolute top-0 left-0 w-full h-screen bg-white flex flex-col justify-start items-start pt-24 px-6 space-y-6 transition-transform duration-300 ease-in-out ${
+                  isOpen ? 'flex' : 'hidden'
+                } md:static md:flex md:flex-row md:w-auto md:h-auto md:space-y-0 md:space-x-6 md:bg-transparent md:pt-0 md:px-0 md:items-center`}
+              >
+                <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
+                  <a href='#' className='hover:text-gray-500'>
+                    Products
+                  </a>
                 </li>
-                <li className='px-4 py-1 max-w-md w-auto m-auto my-0 flex flex-col leading-relaxed'>
-                  Solutions
+                <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
+                  <a href='#' className='hover:text-gray-500'>
+                    Solutions
+                  </a>
                 </li>
-                <li className='px-4 py-1 max-w-md w-auto m-auto my-0 flex flex-col leading-relaxed'>
-                  Resources
+                <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
+                  <a href='#' className='hover:text-gray-500'>
+                    Resources
+                  </a>
                 </li>
-                <li className='px-4 py-1 max-w-md w-auto m-auto my-0 flex flex-col leading-relaxed'>
-                  Enterprise
+                <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
+                  <a href='#' className='hover:text-gray-500'>
+                    Enterprise
+                  </a>
                 </li>
-                <li className='px-4 py-1 max-w-md w-auto m-auto my-0 flex flex-col leading-relaxed'>
-                  Pricing
+                <li className='w-full text-left py-2 md:px-4'>
+                  <a href='#' className='hover:text-gray-500'>
+                    Pricing
+                  </a>
                 </li>
               </ul>
-              <div className='flex justify-end items-center gap-4'>
-                <div className='flex-col inline-flex gap-4 max-w-full'>
-                  <a href='https://login.com'>Log in</a>
-                </div>
-                <div className='flex-col inline-flex gap-4 max-w-full'>
-                  <a
-                    href='https://signup.com'
-                    className='inline-block cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl  py-2 px-4 '
-                  >
-                    Sign Up
-                  </a>
-                </div>
+
+              <div
+                className={`absolute flex flex-col gap-4 items-start w-full px-6 ${
+                  isOpen ? 'flex' : 'hidden'
+                } md:static md:flex md:flex-row md:gap-4 md:w-auto md:bottom-auto md:px-0 md:items-center`}
+              >
+                <a href='https://login.com' className='text-black'>
+                  Log in
+                </a>
+                <a
+                  href='https://signup.com'
+                  className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
+                >
+                  Sign Up
+                </a>
               </div>
             </div>
           </div>
