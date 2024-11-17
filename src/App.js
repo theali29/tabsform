@@ -14,8 +14,8 @@ function App() {
   const toggleMenu = () => setIsOpen(!isOpen)
   return (
     <>
-      <div className='block isolate '>
-        <main className='min-h-screen w-fit'>
+      <div className='min-w-screen max-w-full overflow-x-hidden'>
+        <main className='w-screen overflow-x-hidden'>
           <div className='bg-slate-500 justify-center text-center text-slate-50 font-medium p-5'>
             <p>
               You're invited to Tabsforum Expo! 📣
@@ -25,9 +25,16 @@ function App() {
             </p>
           </div>
           <div className='navbar-container sticky top-0 bg-white z-50 -mb-24'>
-            <div className=' m-auto flex justify-between min-h-16 pl-4 pr-4 items-center  flex-grow p-5'>
-              <div className='flex'>
-                <img src={logo} alt='Brand Logo' width={33} height={18} />
+            <div className=' m-auto flex justify-between items-center min-h-16 pl-4 pr-4  flex-grow p-5'>
+              <div className='flex items-center'>
+                <img
+                  src={logo}
+                  alt='Brand Logo'
+                  width={25}
+                  height={18}
+                  style={{ height: '28px' }}
+                />
+
                 <a href='https://tabsform.com'>
                   <span className='font-normal ml-2 text-3xl font-pacifico'>
                     Tabs
@@ -93,9 +100,9 @@ function App() {
               </div>
 
               <ul
-                className={`absolute top-0 left-0 w-full h-screen bg-white flex flex-col justify-start items-start pt-24 px-6 space-y-6 transition-transform duration-300 ease-in-out ${
-                  isOpen ? 'flex' : 'hidden'
-                } md:static md:flex md:flex-row md:w-auto md:h-auto md:space-y-0 md:space-x-6 md:bg-transparent md:pt-0 md:px-0 md:items-center`}
+                className={`absolute top-0 left-0 w-full h-screen bg-white flex flex-col justify-start items-center pt-24 font-normal  px-4 space-y-6 transition-transform duration-200 ease-in-out ${
+                  isOpen ? 'flex text-3xl' : 'hidden'
+                } lg:static lg:flex z-[-1] lg:flex-row lg:w-auto lg:h-auto lg:space-y-0 lg:space-x-6 lg:bg-transparent lg:pt-0 lg:px-0 lg:items-center`}
               >
                 <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
                   <a href='#' className='hover:text-gray-500'>
@@ -127,17 +134,30 @@ function App() {
               <div
                 className={`absolute flex flex-col gap-4 items-start w-full px-6 ${
                   isOpen ? 'flex' : 'hidden'
-                } md:static md:flex md:flex-row md:gap-4 md:w-auto md:bottom-auto md:px-0 md:items-center`}
+                } lg:static lg:flex lg:flex-row lg:gap-4 lg:w-auto lg:bottom-auto lg:px-0 lg:items-center`}
               >
-                <a href='https://login.com' className='text-black'>
-                  Log in
-                </a>
-                <a
-                  href='https://signup.com'
-                  className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
+                <div
+                  className={`${
+                    isOpen
+                      ? 'fixed bottom-8 left-0 right-0 flex justify-center gap-4 items-center w-full px-6'
+                      : ''
+                  } lg:static lg:flex lg:flex-row lg:gap-4 lg:w-auto lg:px-0 lg:items-center`}
                 >
-                  Sign Up
-                </a>
+                  <a
+                    href='https://login.com'
+                    className={`text-black ${
+                      isOpen ? 'align-bottom' : 'visible'
+                    }`}
+                  >
+                    Log in
+                  </a>
+                  <a
+                    href='https://signup.com'
+                    className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
+                  >
+                    Sign Up
+                  </a>
+                </div>
               </div>
             </div>
           </div>
