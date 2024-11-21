@@ -11,12 +11,15 @@ import React, { useState } from 'react'
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
-  const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+    document.body.style.overflow = !isOpen ? 'hidden' : 'auto'
+  }
   return (
     <>
       <div className='min-w-screen max-w-full overflow-x-hidden'>
         <main className='w-screen overflow-x-hidden'>
-          <div className='bg-slate-500 justify-center text-center text-slate-50 font-medium p-5'>
+          <div className='fixed top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium p-5 z-50'>
             <p>
               You're invited to Tabsforum Expo! 📣
               <a className='underline' href='www.tabsform.com'>
@@ -24,9 +27,10 @@ function App() {
               </a>
             </p>
           </div>
-          <div className='navbar-container sticky top-0 bg-white z-50 -mb-24'>
-            <div className=' m-auto flex justify-between items-center min-h-16 pl-4 pr-4  flex-grow p-5'>
-              <div className='flex items-center'>
+
+          <div className='navbar-container fixed top-[60px] left-0 right-0 bg-white z-50 w-full'>
+            <div className='m-auto flex justify-between items-center min-h-16 px-4 py-5 relative z-[60] lg:max-w-8xl'>
+              <div className='flex items-center z-[60] relative lg:flex-1'>
                 <img
                   src={logo}
                   alt='Brand Logo'
@@ -41,7 +45,7 @@ function App() {
                   </span>
                 </a>
               </div>
-              <div className='lg:hidden max-w-full order-1 relative'>
+              <div className='lg:hidden flex items-center h-full relative z-[60]'>
                 <input
                   type='checkbox'
                   className='absolute m-0 bg-none appearance-none border-none cursor-pointer hidden'
@@ -53,7 +57,7 @@ function App() {
                       ? 'Close mobile navigation menu'
                       : 'Open mobile navigation menu'
                   }
-                  className='border-none bg-none cursor-pointer p-0 relative text-inherit w-14 h-18 -mr-4'
+                  className='relative w-14 h-14 flex items-center justify-center'
                   onClick={toggleMenu}
                 >
                   {/* Close Menu SVG */}
@@ -100,9 +104,9 @@ function App() {
               </div>
 
               <ul
-                className={`absolute top-0 left-0 w-full h-screen bg-white flex flex-col justify-start items-center pt-24 font-normal  px-4 space-y-6 transition-transform duration-200 ease-in-out ${
-                  isOpen ? 'flex text-3xl' : 'hidden'
-                } lg:static lg:flex z-[-1] lg:flex-row lg:w-auto lg:h-auto lg:space-y-0 lg:space-x-6 lg:bg-transparent lg:pt-0 lg:px-0 lg:items-center`}
+                className={`fixed top-0 left-0 w-full h-screen bg-white flex flex-col justify-start items-center pt-36 font-normal px-4 space-y-8 transition-transform duration-200 ease-in-out z-50 ${
+                  isOpen ? 'translate-x-0 text-3xl' : 'translate-x-full'
+                } lg:relative lg:text-base lg:translate-x-0 lg:mx-auto lg:flex lg:flex-row lg:w-auto lg:h-auto lg:space-y-0 lg:space-x-6 lg:bg-transparent lg:pt-0 lg:px-0 lg:items-center lg:flex-2 lg:justify-center`}
               >
                 <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
                   <a href='#' className='hover:text-gray-500'>
@@ -132,43 +136,31 @@ function App() {
               </ul>
 
               <div
-                className={`absolute flex flex-col gap-4 items-start w-full px-6 ${
+                className={`fixed bottom-8 left-0 right-0 flex justify-center gap-4 items-center w-full px-6 z-[60] ${
                   isOpen ? 'flex' : 'hidden'
-                } lg:static lg:flex lg:flex-row lg:gap-4 lg:w-auto lg:bottom-auto lg:px-0 lg:items-center`}
+                } lg:relative lg:flex lg:flex-row lg:gap-4 lg:w-auto lg:bottom-auto lg:px-0 lg:items-center lg:flex-1 lg:justify-end`}
               >
-                <div
-                  className={`${
-                    isOpen
-                      ? 'fixed bottom-8 left-0 right-0 flex justify-center gap-4 items-center w-full px-6'
-                      : ''
-                  } lg:static lg:flex lg:flex-row lg:gap-4 lg:w-auto lg:px-0 lg:items-center`}
+                <a href='https://login.com' className='text-black'>
+                  Log in
+                </a>
+                <a
+                  href='https://signup.com'
+                  className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
                 >
-                  <a
-                    href='https://login.com'
-                    className={`text-black ${
-                      isOpen ? 'align-bottom' : 'visible'
-                    }`}
-                  >
-                    Log in
-                  </a>
-                  <a
-                    href='https://signup.com'
-                    className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
-                  >
-                    Sign Up
-                  </a>
-                </div>
+                  Sign Up
+                </a>
               </div>
             </div>
           </div>
 
-          <div>
+          <div className='pt-[140px]'>
             <section className='pt-24'>
               <div className='relative pt-10 pb-10'>
                 <div className='absolute top-0 left-0 right-0 h-full z-[-1] bg-white'></div>
                 {/* <div> */}
-                <div className='flex-1 flex justify-center items-center pr-10'>
-                  <div className='flex-1 max-w-xl h-auto mt-0  mr-8'>
+
+                <div className='flex-1 flex-col-reverse flex justify-center md:flex-row items-center px-8 md:pr-10'>
+                  <div className='flex-1 max-w-xl mt-8 h-auto md:mt-0  md:mr-8'>
                     <video
                       className='my-video'
                       src={video}
@@ -180,11 +172,11 @@ function App() {
                     />
                   </div>
                   {/* -col-start-7 -col-end-1 */}
-                  <div className='flex-1 flex justify-center items-start text-left flex-col row-start-1 row-end-1 font-libre '>
-                    <h1 className='m-0 overflow-hidden text-6xl text-balance font-normal text-opacity-55'>
+                  <div className='flex-1 flex justify-center md:items-start md:text-left text-center items-center  flex-col row-start-1 row-end-1 font-libre '>
+                    <h1 className='m-0 overflow-hidden md:text-6xl text-5xl text-balance font-normal text-opacity-55'>
                       Engaging forms that inspire connection
                     </h1>
-                    <p className='mt-8 font-normal decoration-0 text-2xl'>
+                    <p className='mt-8 font-normal decoration-0 md:text-2xl text-xl'>
                       <span>
                         Collect all the data you need to
                         <strong> understand customers</strong> with forms
@@ -205,7 +197,7 @@ function App() {
             </section>
 
             <section className='px-4 py-16 grid m-auto'>
-              <div className='flex justify-center flex-wrap gap-8'>
+              <div className='flex justify-center md:flex-wrap md:gap-8 transition-transform ease-in-out'>
                 <div className='flex justify-center'>
                   <img src={loewe} alt='Loewe logo' className='mx-4' />
                 </div>
@@ -226,12 +218,11 @@ function App() {
           </div>
           <div className=''>
             <section className='font-libre px-5 py-6 rounded-none bg-transparent overflow-hidden text-inherit'>
-              <div className='grid grid-cols-2 px-4 py-0 rounded-3xl m-auto gap-6 bg-slate-200'>
-                {/* Left Section: Text and Button */}
-                <div className='text-left self-center p-0 ml-10'>
+              <div className='grid grid-cols-[repeat(4,1fr)] xxs:grid-cols-[repeat(8,1fr)] lg:grid-cols-[repeat(12,1fr)] px-4 py-16 lg:rounded-[80px] rounded-[64px]  m-auto gap-y-0 lg:gap-6 bg-slate-200'>
+                <div className='lg:text-left text-center  col-start-1 -col-end-1 lg:col-start-2 lg:col-end-8 mb-10  self-center md:p-0'>
                   <section className='rounded-none overflow-hidden bg-transparent'>
-                    <div className='grid gap-6 m-auto gap-y-6 p-0'>
-                      <h2 className='m-0 text-6xl'>
+                    <div className='grid gap-6 m-auto gap-y-4 xl:gap-y-6 p-0'>
+                      <h2 className='m-0 lg:text-[41px] text-[29px] col-start-1 -col-end-1  tracking-tight leading-[1.1] '>
                         <div className='text-inherit'>
                           <p>
                             “We need to know that we're building the right
@@ -240,31 +231,33 @@ function App() {
                         </div>
                       </h2>
 
-                      <div className='text-xl font-normal decoration-current'>
+                      <div className='text-[16px] leading-[1.1] md:text-xl font-normal decoration-current'>
                         <div className='text-inherit'>
                           <p>
                             Chase Clark, Senior UX Researcher at Calm, explains
-                            why they switched to Tabsfonorm.
+                            why they switched to Tabsform.
                           </p>
-                        </div>
-                      </div>
-
-                      <div className='flex flex-row w-auto gap-6 content-center'>
-                        <div className='flex-col inline-flex items-stretch gap-4 max-w-full min-w-32'>
-                          <a
-                            href='https://read.com'
-                            className='inline-block text-center cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
-                          >
-                            Read on
-                          </a>
                         </div>
                       </div>
                     </div>
                   </section>
                 </div>
+                <div className='col-start-1 -col-end-1 lg:col-start-2 lg:col-end-8 lg:justify-self-start'>
+                  <div className='xxs:w-auto flex flex-col flex-wrap gap-6 content-center'>
+                    <div className='inline-flex flex-col gap-8 items-stretch bg-transparent min-w-[140px] max-w-full w-auto'>
+                      <a
+                        aria-label='Read on'
+                        href='/blog/customer/calm-a-success-story-of-mindful-forms-and-empowered-decision-making/'
+                        className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4 text-center'
+                      >
+                        Read on
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Right Section: Image */}
-                <div className='flex justify-end items-center h-full'>
+                <div className='flex w-auto row-start-2 col-start-1 row-end-auto -col-end-1 mx-4 mt-0 mb-10 md:col-start-3 md:-col-end-3 md:mt-0 md:mb-10 md:-mx-6 lg:row-start-1 lg:col-start-8 lg:row-end-3  lg:-col-end-2 lg:mx-0 lg:-my-16  justify-center items-center'>
                   <img
                     src={image}
                     alt='background'
@@ -807,39 +800,3 @@ function App() {
 }
 
 export default App
-
-// import './App.css'
-
-// function App() {
-//   return (
-//     <>
-//       <div className='block isolate'>
-//         <main className=''>
-//           <div className='bg-slate-500 justify-center text-center text-slate-50 font-medium p-5'>
-//             <p>
-//               You're invited to Tabsforum Expo!{' '}
-//               <a className='underline' href='www.tabsform.com'>
-//                 Register Now
-//               </a>
-//             </p>
-//           </div>
-//           <div className='p-5'>
-//             <nav className='py-2 flex justify-between items-center m-auto'>
-//               <h1 className='font-bold'>Tabs</h1>
-
-//               <ul className='flex space-x-8'>
-//                 <li>Products</li>
-//                 <li>Solutions</li>
-//                 <li>Resources</li>
-//                 <li>Enterprise</li>
-//                 <li>Pricing</li>
-//               </ul>
-//             </nav>
-//           </div>
-//         </main>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default App
