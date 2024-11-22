@@ -282,23 +282,29 @@ function App() {
               </div>
             </section>
           </div>
-          <div className='flex justify-center'>
-            <div className='grid grid-cols-12 gap-y-12 py-24 px-10 gap-6 max-w-5xl w-full'>
-              <div className='flex flex-col items-center text-center col-start-3 col-span-2 gap-8 max-w-xs'>
-                <h3 className='text-7xl m-0 overflow-hidden'>96%</h3>
-                <span className='font-normal text-xl m-0 overflow-hidden'>
+          <div className='relative'>
+            <div className='grid gap-y-12 lg:py-24 pb-24 md:py-20 py-16  lg:grid-cols-[repeat(12,1fr)] lg:gap-y-6 lg:px-6 xxs:grid-cols-[repeat(8,1fr)] xxs:gap-6 xxs:px-6 grid-cols-[repeat(4,1fr)] px-10 gap-6 m-auto'>
+              <div className='flex flex-col items-center justify-start text-center col-start-1 -col-end-1  lg:col-start-3 lg:col-span-2 lg:text-center gap-8'>
+                <h3 className='text-[64px] leading-[1.1] m-0 overflow-hidden'>
+                  96%
+                </h3>
+                <span className='font-normal text-base lg:text-xl leading-[1.2] m-0 overflow-hidden'>
                   of customers say they have a better brand experience
                 </span>
               </div>
-              <div className='flex flex-col items-center text-center col-start-6 col-span-2 gap-8 max-w-xs'>
-                <h3 className='text-7xl m-0 overflow-hidden'>95%</h3>
-                <span className='font-normal text-xl m-0 overflow-hidden'>
+              <div className='flex flex-col items-center justify-start text-center col-start-1 -col-end-1  lg:col-start-6 lg:col-span-2 lg:text-center gap-8'>
+                <h3 className='text-[64px] leading-[1.1] m-0 overflow-hidden'>
+                  95%
+                </h3>
+                <span className='font-normal text-base lg:text-xl leading-[1.2] m-0 overflow-hidden'>
                   of customers say they gather more data, more easily
                 </span>
               </div>
-              <div className='flex flex-col items-center text-center col-start-9 col-span-2 gap-8 max-w-xs'>
-                <h3 className='text-7xl m-0 overflow-hidden'>87%</h3>
-                <span className='font-normal text-xl m-0 overflow-hidden'>
+              <div className='flex flex-col items-center justify-start text-center col-start-1 -col-end-1  lg:col-start-9 lg:col-span-2 lg:text-center gap-8'>
+                <h3 className='text-[64px] leading-[1.1] m-0 overflow-hidden'>
+                  87%
+                </h3>
+                <span className='font-normal text-base lg:text-xl leading-[1.2] m-0 overflow-hidden'>
                   of customers say they reveal deeper insights from data
                 </span>
               </div>
@@ -311,13 +317,13 @@ function App() {
                 <div className='p-0 col-start-1 -col-end-1 mb-10 text-center'>
                   <section className='bg-transparent text-inherit overflow-hidden'>
                     <div className='gap-y-6 p-0 gap-x-6 grid m-auto'>
-                      <div className='flex flex-col items-center text-6xl col-start-3 -col-end-3 text-center mb-2'>
+                      <div className='flex flex-col items-center col-start-1 -col-end-1 text-4xl leading-[1.1] lg:text-5xl lg:col-start-3 lg:-col-end-3 md:col-start-2 md:-col-end-2 text-center mb-2'>
                         <span className='block'>
                           Start getting to know your
                         </span>
                         <span className='block'>customers</span>
                       </div>
-                      <div className='text-xl font-normal m-0 overflow-hidden text-inherit col-start-3 col-end-[-3] text-center'>
+                      <div className='text-base leading-[1.2] font-normal m-0 overflow-hidden text-inherit col-start-1 -col-end-1 lg:col-start-3 lg:col-end-[-3] text-center'>
                         <div className='text-inherit'>
                           <p>
                             <strong>Our Free Plan lets you:</strong>
@@ -332,17 +338,19 @@ function App() {
                     </div>
                   </section>
                 </div>
-                <div className='flex justify-center items-center gap-4'>
-                  <div className='flex-col inline-flex gap-4 max-w-full'>
-                    <a
-                      href='https://signup.com'
-                      className='inline-block cursor-pointer font-medium border-solid border-2 border-white text-black bg-white rounded-xl  py-2 px-10'
-                    >
-                      Sign Up
-                    </a>
-                  </div>
-                  <div className='flex-col inline-flex gap-4 max-w-full underline'>
-                    <a href='https:/plans.com'>Compare plans</a>
+                <div className='col-start-1 -col-end-1 md:justify-self-center'>
+                  <div className='md:flex-row flex flex-col flex-wrap gap-6 content-center w-full xxs:w-auto items-center'>
+                    <div className='flex-col inline-flex gap-4 max-w-full'>
+                      <a
+                        href='https://signup.com'
+                        className='inline-block cursor-pointer font-medium border-solid border-2 border-white text-black bg-white rounded-xl  py-2 px-10'
+                      >
+                        Sign Up
+                      </a>
+                    </div>
+                    <div className='flex-col inline-flex gap-4 max-w-full underline'>
+                      <a href='https:/plans.com'>Compare plans</a>
+                    </div>
                   </div>
                 </div>
               </div>
