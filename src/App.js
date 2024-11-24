@@ -19,7 +19,7 @@ function App() {
     <>
       <div className='min-w-screen max-w-full overflow-x-hidden'>
         <main className='w-screen overflow-x-hidden'>
-          <div className='fixed text-base top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium p-5 z-50'>
+          <div className='fixed text-base top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium  p-5 z-50'>
             <p>
               You're invited to Tabsforum Expo! 📣
               <a className='underline' href='www.tabsform.com'>
@@ -168,13 +168,13 @@ function App() {
             </div>
           </div>
 
-          <div className='pt-[140px]'>
+          <div className='pt-[100px]'>
             <section className='pt-24'>
               <div className='relative pt-10 pb-10'>
                 <div className='absolute top-0 left-0 right-0 h-full z-[-1] bg-white'></div>
                 {/* <div> */}
 
-                <div className='flex-1 flex-col-reverse flex justify-center md:flex-row items-center px-8 md:pr-10'>
+                <div className='flex-1 flex-col-reverse flex justify-center md:flex-row items-center px-8 md:pr-10 max-w-[1440px] mx-auto'>
                   <div className='flex-1 max-w-xl mt-8 h-auto md:mt-0  md:mr-8'>
                     <video
                       className='my-video'
@@ -231,9 +231,9 @@ function App() {
               </div>
             </section>
           </div>
-          <div className=''>
-            <section className='font-libre px-5 py-6 rounded-none bg-transparent overflow-hidden text-inherit'>
-              <div className='grid grid-cols-[repeat(4,1fr)] xxs:grid-cols-[repeat(8,1fr)] lg:grid-cols-[repeat(12,1fr)] px-4 py-16 lg:rounded-[80px] rounded-[64px]  m-auto gap-y-0 lg:gap-6 bg-slate-200'>
+          <div className='max-w-[1440px] mx-auto px-4 lg:px-8'>
+            <section className='font-libre py-6 rounded-none bg-transparent overflow-hidden text-inherit'>
+              <div className='grid grid-cols-[repeat(4,1fr)] xxs:grid-cols-[repeat(8,1fr)] lg:grid-cols-[repeat(12,1fr)] py-16 lg:rounded-[72px] rounded-[64px] gap-y-0  lg:gap-6 bg-slate-200'>
                 <div className='lg:text-left text-center  col-start-1 -col-end-1 lg:col-start-2 lg:col-end-8 mb-10  self-center md:p-0'>
                   <section className='rounded-none overflow-hidden bg-transparent'>
                     <div className='grid gap-6 m-auto gap-y-4 xl:gap-y-6 p-0'>
@@ -246,7 +246,7 @@ function App() {
                         </div>
                       </h2>
 
-                      <div className='text-[16px] leading-[1.1] md:text-xl font-normal decoration-current'>
+                      <div className='text-[16px] leading-[1.1] lg:text-xl font-normal decoration-current'>
                         <div className='text-inherit'>
                           <p>
                             Chase Clark, Senior UX Researcher at Calm, explains
@@ -323,7 +323,7 @@ function App() {
                         </span>
                         <span className='block'>customers</span>
                       </div>
-                      <div className='text-base leading-[1.2] font-normal m-0 overflow-hidden text-inherit col-start-1 -col-end-1 lg:col-start-3 lg:col-end-[-3] text-center'>
+                      <div className='text-base leading-[1.2] font-normal m-0 overflow-hidden text-inherit col-start-1 -col-end-1 md:col-start-3 md:col-end-[-3] text-center'>
                         <div className='text-inherit'>
                           <p>
                             <strong>Our Free Plan lets you:</strong>
@@ -360,8 +360,9 @@ function App() {
             <h2 className='absolute h-0 w-0 p-0 overflow-hidden text-sm font-normal'>
               Footer area
             </h2>
-            <div className='grid py-20 px-8 gap-y-0 gap-x-8 justify-center'>
-              <div className='flex gap-y-16 gap-x-24  flex-wrap col-start-1 -col-end-1'>
+
+            <div className='grid grid-cols-[repeat(4,1fr)] lg:grid-cols-[repeat(12,minmax(56px,64px))] md:grid-cols-[repeat(8,minmax(56px,64px))] xxs:grid-cols-[repeat(4,minmax(56px,64px))] py-20 px-8 gap-y-0 gap-x-6 justify-center'>
+              <div className='grid lg:grid-cols-5 md:grid-cols-3 md:grid-rows-2 gap-y-16 gap-x-12 col-span-full'>
                 <div className='flex-grow basis-0'>
                   <h3 className='uppercase font-bold text-base mx-0 mt-0 mb-8 '>
                     Product
@@ -726,6 +727,60 @@ function App() {
                     </div>
                   </div>
                 </div>
+
+                <div className='flex-grow basis-0 md:visible lg:hidden'>
+                  <button className='underline mb-6 block transition-opacity text-inherit'>
+                    Cookie settings
+                  </button>
+                  <a
+                    href='https://cookie.com'
+                    className='underline mb-6 block transition-opacity text-inherit'
+                  >
+                    Check our Cookie Policy to delete cookies
+                  </a>
+                  <a
+                    href='https"//abuse.com'
+                    className='underline mb-6 block transition-opacity text-inherit'
+                  >
+                    Report abuse
+                  </a>
+
+                  <div className='relative'>
+                    <button className='flex border-none p-0 mb-6 text-inherit items-center'>
+                      <div className='mr-2'>
+                        <svg
+                          height='17'
+                          viewBox='0 0 20 20'
+                          width='17'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <path
+                            d='M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zM9 17.9C5.1 17.4 2 14 2 10c0-.6.1-1.2.2-1.8L7 13v1c0 1.1.9 2 2 2v1.9zm6.9-2.5c-.3-.8-1-1.4-1.9-1.4h-1v-3c0-.6-.4-1-1-1H6V8h2c.6 0 1-.4 1-1V5h2c1.1 0 2-.9 2-2v-.4c2.9 1.2 5 4.1 5 7.4 0 2.1-.8 4-2.1 5.4z'
+                            fill='currentColor'
+                            fill-rule='evenodd'
+                          ></path>
+                        </svg>
+                      </div>
+                      <span>English</span>
+                      <div className='ml-2'>
+                        <svg
+                          fill='none'
+                          height='5'
+                          viewBox='0 0 9 5'
+                          width='9'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <path
+                            clip-rule='evenodd'
+                            d='M4.35156 2.80708L2.33394 0.789472C1.78653 0.24205 0.898985 0.242052 0.351563 0.789472L4.35156 4.78946L8.35156 0.789472C7.80411 0.242052 6.91658 0.242052 6.36917 0.789472L4.35156 2.80708Z'
+                            fill='currentColor'
+                            fill-rule='evenodd'
+                          ></path>
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -757,7 +812,7 @@ function App() {
                 With love, from Lahore
               </span>
 
-              <div className=''>
+              <div className='hidden lg:block'>
                 <div className='relative'>
                   <button className='flex border-none p-0 text-inherit items-center'>
                     <div className='mr-2'>
@@ -794,8 +849,8 @@ function App() {
                   </button>
                 </div>
               </div>
-              <div>
-                <div className='flex flex-row justify-center items-center gap-x-5 py-0 px-4'>
+              <div className='hidden lg:block'>
+                <div className='flex  flex-row justify-center items-center gap-x-5 py-0 px-4'>
                   <button className='underline mb-0 block transition-opacity text-inherit'>
                     Cookie settings
                   </button>
