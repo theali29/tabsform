@@ -19,7 +19,7 @@ function App() {
     <>
       <div className='min-w-screen max-w-full overflow-x-hidden'>
         <main className='w-screen overflow-x-hidden'>
-          <div className='fixed text-sm lg:text-base leading-[1.1] top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium  p-5 z-50'>
+          <div className='fixed text-sm lg:text-base leading-[1.1] top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium p-6 lg:p-5 z-50'>
             <p>
               You're invited to Tabsforum Expo! 📣
               <a className='underline' href='www.tabsform.com'>
