@@ -26,7 +26,6 @@ module.exports = {
         xxs: '430px',
         xl: '1280px', // Customize your screen size breakpoint
       },
-      
     },
   },
   plugins: [],
