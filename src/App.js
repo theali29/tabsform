@@ -363,6 +363,42 @@ function App() {
               </div>
             </section>
           </div>
+          <section
+            className='theme--dark relative pt-0 pb-0'
+            style={{
+              zIndex: `1`,
+            }}
+          >
+            <video
+              className='absolute inset-0 h-full w-full bg-black object-cover'
+              src='https://cdnsnty.tonyrobbins.com/2024-05-01T17-53-23.772Z-Homepage_FullScreen_Reel.mp4'
+              loop
+              autoPlay
+              muted
+              playsInline
+              onLoadedMetadata={(e) => e.target.play()}
+            ></video>
+            <div className='absolute -inset-1 bg-black opacity-50'></div>
+            <div className='wrapper flex text-balance justify-center '>
+              <div className='relative max-w-3xl space-y-5 text-center'>
+                <div className='!*:opacity-100'>
+                  <div
+                    className='prose text-white'
+                    data-sentry-component='RichText'
+                    data-sentry-source-file='RichText.tsx'
+                  >
+                    <h2 className=' font-apercupro h2-large  text-3xl font-medium my-5 leading-[1em] tracking-tighter'>
+                      Master every form you see
+                    </h2>
+                    <p>
+                      Close the gap between where you are and how you want to
+                      use forms.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
           <div className='relative'>
             <div className='grid gap-y-12 lg:py-24 pb-24 md:py-20 py-16  lg:grid-cols-[repeat(12,1fr)] lg:gap-y-6 lg:px-6 xxs:grid-cols-[repeat(8,1fr)] xxs:gap-6 xxs:px-6 grid-cols-[repeat(4,1fr)] px-10 gap-6 m-auto'>
               <div className='flex flex-col items-center justify-start text-center col-start-1 -col-end-1  lg:col-start-3 lg:col-span-2 lg:text-center gap-8'>
