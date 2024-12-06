@@ -15,17 +15,48 @@ function App() {
     setIsOpen(!isOpen)
     document.body.style.overflow = !isOpen ? 'hidden' : 'auto'
   }
-  const [translateX, setTranslateX] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  const [translateX, setTranslateX] = useState(15) // Adjusted starting position
+  const [reverse, setReverse] = useState(false)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTranslateX(
-        (prev = -40) => (prev <= -73.3333 ? -40 : prev - 6.666) // Adjust step and reset logic as needed
-      )
-    }, 1000) // Update every second
+    const handleResize = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches)
+    }
 
-    return () => clearInterval(interval)
+    handleResize() // Check on mount
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  useEffect(() => {
+    if (isMobile) {
+      let timeout
+      const scroll = () => {
+        if (!reverse) {
+          setTranslateX((prev) => {
+            if (prev <= -73.3333) {
+              setReverse(true) // Reverse the direction
+              return prev
+            }
+            return prev - 6.6666
+          })
+        } else {
+          setTranslateX(15) // Reset position quickly
+          setReverse(false) // Start forward movement again
+        }
+      }
+
+      timeout = setTimeout(
+        () => {
+          scroll()
+        },
+        reverse ? 500 : 1000
+      ) // Half-second pause after each scroll
+
+      return () => clearTimeout(timeout)
+    }
+  }, [translateX, isMobile, reverse])
 
   return (
     <>
@@ -225,35 +256,57 @@ function App() {
 
             <section className='px-4 py-16 grid m-auto grid-cols-[repeat(4,1fr)] gap-4 xxs:gap-6 xxs:grid-cols-[repeat(8,1fr)] lg:grid-cols-[repeat(12,1fr)] lg:gap-6'>
               <div className='col-start-1 -col-end-1'>
-                <div className='grid gap-y-0 gap-x-6 grid-cols-[repeat(4,1fr)] justify-center my-0 -mx-4 xxs:grid-cols-[repeat(4,minmax(56px, 64px))] md:grid-cols-[repeat(8,minmax(56px, 64px))]  md:max-md:overflow-hidden text-center lg:grid-cols-[repeat(12,minmax(56px, 64px))] xl:grid-cols-[repeat(12,64px)] xl:gap-y-0 xl:gap-x-8 '>
-                  <div className='col-start-1 -col-end-1 w-full gap-y-6 lg:px-16 lg:py-0 lg:justify-between md:flex md:flex-wrap md:justify-center md:max-md:overflow-hidden'>
-                    <div className='xxs:col-start-1 xxs:-col-end-1 xxs:w-full '>
-                      <div className='inline-flex'>
-                        {/* <div
-                          className='xxs:grid xxs:grid-cols-[repeat(15,min-content)] xxs:gap-x-16 xxs:relative xxs:transition-transform xxs:ease-in-out'
-                          // style={{
-                          //   transform: `xxs:translateX(${translateX}%)`,
-                          // }}
-                        > */}
-                        <div className='flex justify-center'>
-                          <img src={loewe} alt='Loewe logo' className='mx-4' />
-                        </div>
-                        <div className='flex justify-center'>
-                          <img src={airbnb} alt='Airbnb' className='mx-4' />
-                        </div>
-                        <div className='flex justify-center'>
-                          <img src={sugarcrm} alt='SugarCRM' className='mx-4' />
-                        </div>
-                        <div className='flex justify-center'>
-                          <img src={klaviyo} alt='Klaviyo' className='mx-4' />
-                        </div>
-                        <div className='flex justify-center'>
-                          <img src={cartier} alt='Cartier' className='mx-4' />
-                        </div>
+                {/* Larger Screens */}
+                {!isMobile && (
+                  <div className='grid gap-y-0 gap-x-6 grid-cols-[repeat(4,1fr)] justify-center my-0 -mx-4 xxs:grid-cols-[repeat(4,minmax(56px, 64px))] md:grid-cols-[repeat(8,minmax(56px, 64px))] text-center lg:grid-cols-[repeat(12,minmax(56px, 64px))] xl:grid-cols-[repeat(12,64px)] xl:gap-y-0 xl:gap-x-8'>
+                    <div className='col-start-1 -col-end-1 w-full gap-y-6 lg:px-16 lg:py-0 lg:justify-between md:flex md:flex-wrap md:justify-center'>
+                      <div className='flex justify-center'>
+                        <img src={loewe} alt='Loewe logo' className='mx-4' />
+                      </div>
+                      <div className='flex justify-center'>
+                        <img src={airbnb} alt='Airbnb' className='mx-4' />
+                      </div>
+                      <div className='flex justify-center'>
+                        <img src={sugarcrm} alt='SugarCRM' className='mx-4' />
+                      </div>
+                      <div className='flex justify-center'>
+                        <img src={klaviyo} alt='Klaviyo' className='mx-4' />
+                      </div>
+                      <div className='flex justify-center'>
+                        <img src={cartier} alt='Cartier' className='mx-4' />
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
+
+                {/* Smaller Screens */}
+                {isMobile && (
+                  <div
+                    className='xxs:grid xxs:grid-cols-[repeat(15,min-content)] xxs:gap-x-16 xxs:relative xxs:transition-transform xxs:ease-in-out'
+                    style={{
+                      transform: `translateX(${translateX}%)`,
+                      transition: reverse
+                        ? 'transform 0.5s ease-out'
+                        : 'transform 1s ease-in-out',
+                    }}
+                  >
+                    <div className='w-full text-lg '>
+                      <img src={loewe} alt='Loewe logo' className='mx-4' />
+                    </div>
+                    <div className='w-full'>
+                      <img src={airbnb} alt='Airbnb' className='mx-4' />
+                    </div>
+                    <div className='w-full'>
+                      <img src={sugarcrm} alt='SugarCRM' className='mx-4' />
+                    </div>
+                    <div className='w-full'>
+                      <img src={klaviyo} alt='Klaviyo' className='mx-4' />
+                    </div>
+                    <div className='w-full'>
+                      <img src={cartier} alt='Cartier' className='mx-4' />
+                    </div>
+                  </div>
+                )}
               </div>
             </section>
             {/* <section className='px-4 py-16 grid m-auto'>
