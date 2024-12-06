@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 430) // Set breakpoint for mobile
+      setIsMobile(window.innerWidth < 768) // Set breakpoint for mobile
     }
 
     handleResize()
