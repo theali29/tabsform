@@ -379,7 +379,7 @@ function App() {
               onLoadedMetadata={(e) => e.target.play()}
             ></video>
             <div className='absolute -inset-1 bg-black opacity-50'></div>
-            <div className='wrapper flex text-balance justify-center '>
+            <div className='ml-auto mr-auto w-full max-width-[1600px] px-5 md:px-5 lg:px-9 flex text-balance justify-center '>
               <div className='relative max-w-3xl space-y-5 text-center'>
                 <div className='!*:opacity-100'>
                   <div
@@ -387,13 +387,25 @@ function App() {
                     data-sentry-component='RichText'
                     data-sentry-source-file='RichText.tsx'
                   >
-                    <h2 className=' font-apercupro h2-large  text-3xl font-medium my-5 leading-[1em] tracking-tighter'>
+                    <h2 className=' font-libre h2-large  text-4xl font-medium my-5 leading-[1em] tracking-tighter'>
                       Master every form you see
                     </h2>
                     <p>
                       Close the gap between where you are and how you want to
                       use forms.
                     </p>
+                  </div>
+                  <div className='col-start-1 -col-end-1 md:justify-self-center my-10'>
+                    <div className='md:flex-row text-sm flex flex-col flex-wrap gap-6 content-center w-full xxs:w-auto items-center'>
+                      <div className='flex-col inline-flex gap-4 max-w-full'>
+                        <a
+                          href='https://signup.com'
+                          className='inline-block  cursor-pointer font-medium border-solid border-2 border-white text-black bg-white rounded-xl  py-2 px-10'
+                        >
+                          Sign Up
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
