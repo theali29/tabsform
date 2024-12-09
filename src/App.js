@@ -7,6 +7,7 @@ import sugarcrm from './images/sugarcrm.svg'
 import klaviyo from './images/Klaviyo.svg'
 import cartier from './images/Cartier.svg'
 import image from './images/image2.png'
+import Product from './pages/product.js'
 import React, { useEffect, useState } from 'react'
 
 function App() {
@@ -141,10 +142,7 @@ function App() {
                 } lg:relative lg:text-base lg:translate-x-0 lg:mx-auto lg:flex lg:flex-row lg:w-auto lg:h-auto lg:space-y-0 lg:space-x-6 lg:bg-transparent lg:pt-0 lg:px-0 lg:items-center lg:flex-2 lg:justify-center`}
               >
                 <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
-                  <a
-                    href='https:/solutions.com'
-                    className='hover:text-gray-500'
-                  >
+                  <a href={<Product />} className='hover:text-gray-500'>
                     Products
                   </a>
                 </li>
