@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../expand.png'
-function Navbar() {
+import { Routes, Route } from 'react-router-dom'
+import Product from '../pages/product.js'
+import SignUp from '../pages/signup.js'
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -12,9 +15,9 @@ function Navbar() {
       <div className='fixed text-sm lg:text-base leading-[1.1] top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium p-6 lg:p-5 z-50'>
         <p>
           You're invited to Tabsforum Expo! 📣
-          <a className='underline' href='www.tabsform.com'>
+          <Link className='underline' to='www.tabsform.com'>
             Register Now
-          </a>
+          </Link>
         </p>
       </div>
       <div className='navbar-container fixed top-[60px] left-0 right-0 bg-white z-50 w-full'>
@@ -28,11 +31,11 @@ function Navbar() {
               style={{ height: '28px' }}
             />
 
-            <a href='https://tabsform.com'>
+            <Link to='https://tabsform.com'>
               <span className='font-normal ml-2 text-3xl font-pacifico'>
                 Tabs
               </span>
-            </a>
+            </Link>
           </div>
           <div className='lg:hidden flex items-center h-full relative z-[60]'>
             <input
@@ -113,12 +116,12 @@ function Navbar() {
               </Link>
             </li>
             <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
-              <Link href='/enterprise' className='hover:text-gray-500'>
+              <Link to='/enterprise' className='hover:text-gray-500'>
                 Enterprise
               </Link>
             </li>
             <li className='w-full text-left py-2 md:px-4'>
-              <Link href='/pricing' className='hover:text-gray-500'>
+              <Link to='/pricing' className='hover:text-gray-500'>
                 Pricing
               </Link>
             </li>
@@ -133,15 +136,18 @@ function Navbar() {
               Log in
             </Link>
             <Link
-              href='/signup'
+              to='/signup'
               className='inline-block font-medium border-2 border-black text-white bg-black rounded-2xl py-2 px-4'
             >
               Sign Up
             </Link>
           </div>
         </div>
+        <Routes>
+          <Route path='/products' element={<Product />} />
+          <Route path='/signup' element={<SignUp />} />
+        </Routes>
       </div>
     </>
   )
 }
-export default Navbar

@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from 'react'
-function Product() {
-  return (
-    <div>
-      <h1>Welcome to the products.</h1>
-    </div>
-  )
+import React from 'react'
+import Layout from '../components/Layout'
+export default function Product() {
+  return <div className=''>Welcome to product</div>
 }
-export default Product

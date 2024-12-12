@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './navbar.js'
 import Footer from './footer.js'
-function Layout({ children }) {
+export default function Layout({ children }) {
   return (
     <>
       <Navbar />
@@ -10,4 +10,3 @@ function Layout({ children }) {
     </>
   )
 }
-export default Layout

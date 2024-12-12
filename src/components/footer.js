@@ -1,5 +1,5 @@
 import React from 'react'
-function Footer() {
+export default function Footer() {
   return (
     <>
       <footer className='bg-black text-slate-50 font-apercupro shadow-none'>
@@ -517,5 +517,3 @@ function Footer() {
     </>
   )
 }
-
-export default Footer
