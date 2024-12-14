@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, Route, Routes } from 'react-router-dom'
 import logo from '../expand.png'
-import { Routes, Route } from 'react-router-dom'
 import Product from '../pages/product.js'
 import SignUp from '../pages/signup.js'
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+
   const toggleMenu = () => {
     setIsOpen(!isOpen)
     document.body.style.overflow = !isOpen ? 'hidden' : 'auto'
   }
+
   return (
     <>
       <div className='fixed text-sm lg:text-base leading-[1.1] top-0 left-0 right-0 bg-slate-500 justify-center text-center text-slate-50 font-medium p-6 lg:p-5 z-50'>
@@ -30,7 +32,6 @@ export default function Navbar() {
               height={18}
               style={{ height: '28px' }}
             />
-
             <Link to='https://tabsform.com'>
               <span className='font-normal ml-2 text-3xl font-pacifico'>
                 Tabs
@@ -38,10 +39,6 @@ export default function Navbar() {
             </Link>
           </div>
           <div className='lg:hidden flex items-center h-full relative z-[60]'>
-            <input
-              type='checkbox'
-              className='absolute m-0 bg-none appearance-none border-none cursor-pointer hidden'
-            />
             <button
               aria-expanded={isOpen}
               aria-label={
@@ -52,7 +49,6 @@ export default function Navbar() {
               className='relative w-14 h-14 flex items-center justify-center'
               onClick={toggleMenu}
             >
-              {/* Close Menu SVG */}
               <svg
                 id='close-menu-svg'
                 xmlns='http://www.w3.org/2000/svg'
@@ -71,8 +67,6 @@ export default function Navbar() {
                   strokeLinecap='round'
                 />
               </svg>
-
-              {/* Open Menu SVG */}
               <svg
                 id='open-menu-svg'
                 xmlns='http://www.w3.org/2000/svg'
@@ -101,7 +95,11 @@ export default function Navbar() {
             } lg:relative lg:text-base lg:translate-x-0 lg:mx-auto lg:flex lg:flex-row lg:w-auto lg:h-auto lg:space-y-0 lg:space-x-6 lg:bg-transparent lg:pt-0 lg:px-0 lg:items-center lg:flex-2 lg:justify-center`}
           >
             <li className='w-full text-left py-2 border-b border-gray-200 md:border-none md:py-0 md:px-4'>
-              <Link to='/products' className='hover:text-gray-500'>
+              <Link
+                to='/products'
+                onClick={toggleMenu}
+                className='hover:text-gray-500'
+              >
                 Products
               </Link>
             </li>
@@ -143,10 +141,6 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
-        <Routes>
-          <Route path='/products' element={<Product />} />
-          <Route path='/signup' element={<SignUp />} />
-        </Routes>
       </div>
     </>
   )
