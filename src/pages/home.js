@@ -6,7 +6,7 @@ import sugarcrm from '../images/sugarcrm.svg'
 import klaviyo from '../images/Klaviyo.svg'
 import cartier from '../images/Cartier.svg'
 import image from '../images/image2.png'
-import { Routes, Route } from 'react-router-dom'
+import { Link, Routes, Route } from 'react-router-dom'
 import Product from './product.js'
 import SignUp from './signup.js'
 import React, { useEffect, useState } from 'react'
@@ -78,12 +78,12 @@ export default function Home() {
                       </span>
                     </p>
                     <div className='flex-col inline-flex gap-4 max-w-full mt-10'>
-                      <a
-                        href='https://free.com'
+                      <Link
+                        to='/signup'
                         className='inline-block cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl  py-2 px-4 '
                       >
                         Get Started-it's free
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -288,7 +288,7 @@ export default function Home() {
           </div>
 
           <div>
-            <section className='font-libre py-24 rounded-none bg-black text-slate-50 justify-center'>
+            <section className='font-libre py-24 rounded-none bg-[rgb(25,25,25)] text-slate-50 justify-center'>
               <div className='grid gap-y-0 gap-x-6 px-10 m-auto'>
                 <div className='p-0 col-start-1 -col-end-1 mb-10 text-center'>
                   <section className='bg-transparent text-inherit overflow-hidden'>

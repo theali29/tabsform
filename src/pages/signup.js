@@ -1,44 +1,95 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import video from '../video/trailer1.mp4'
+import sign from '../images/signbrand.png'
+import logo from '../expand.png'
+import { Link } from 'react-router-dom'
 
 export default function SignUp() {
   return (
-    <div className='min-w-screen max-w-full overflow-x-hidden'>
-      <main className='w-screen overflow-x-hidden'>
-        <div className='flex-1 flex-col-reverse flex justify-center md:flex-row items-center px-8 md:pr-10 max-w-[1440px] mx-auto'>
-          <div className='flex-1 max-w-xl mt-8 h-auto md:mt-0  md:mr-8'>
-            <video
-              className='my-video'
-              src={video}
-              loop
-              autoPlay
-              muted
-              playsInline
-              onLoadedMetadata={(e) => e.target.play()}
-            />
-          </div>
-          {/* -col-start-7 -col-end-1 */}
-          <div className='flex-1 flex justify-center md:items-start md:text-left text-center items-center  flex-col row-start-1 row-end-1 font-libre '>
-            <h1 className='m-0 overflow-hidden md:text-6xl text-5xl text-balance font-normal text-opacity-55'>
-              Engaging forms that inspire connection
-            </h1>
-            <p className='mt-8 font-normal decoration-0 md:text-2xl text-xl'>
-              <span>
-                Collect all the data you need to
-                <strong> understand customers</strong> with forms designed to be
-                refreshingly different.
-              </span>
-            </p>
-            <div className='flex-col inline-flex gap-4 max-w-full mt-10'>
-              <a
-                href='https://free.com'
-                className='inline-block cursor-pointer font-medium border-solid border-2 border-black text-white bg-black rounded-2xl  py-2 px-4 '
-              >
-                Get Started-it's free
-              </a>
+    <div className=''>
+      <main className=''>
+        <div className='flex h-screen overflow-hidden'>
+          <section className='overflow-hidden md:flex hidden bg-[rgb(25,25,25)] flex-grow flex-shrink flex-basis relative flex-col min-h-[90vh] w-full p-0'>
+            <div className='flex flex-col items-center h-full w-full justify-center '>
+              <h1 className='text-[rgb(255,255,255)] text-4xl w-[366px] text-center font-normal leading-[44px] mx-0 mt-0 mb-9'>
+                Sign up <br />
+                and come on in
+              </h1>
+              <div>
+                <picture>
+                  <img
+                    src='https://www.typeform.com/static/images/signup-page/product-sample@1x.webp'
+                    alt='Tabsform sample'
+                    loading='lazy'
+                    decoding='async'
+                    fetchPriority='low'
+                    role='presentation'
+                  />
+                </picture>
+              </div>
+              <p className='text-[rgb(255,255,255)] text-[14px] leading-5 absolute bottom-6'>
+                © Tabsform
+              </p>
             </div>
-          </div>
+          </section>
+          <section className='lg:-ml-4 p-0 flex-grow flex-shrink flex-basis grid overflow-auto h-full rounded-r-none rounded-l-2xl relative flex flex-col min-h-[90vh] w-full bg-transparent '>
+            <div className='bg-[rgb(255,255,255)] grid relative w-full  grid-cols-[0px_auto] grid-rows-[52px_auto_52px] items-center '>
+              <div className='relative py-2 px-6 text-[rgb(61,61,60)]  items-center'>
+                <button className='bg-none  flex border-none p-0 text-inherit items-center'>
+                  <div className='mr-2'>
+                    <svg
+                      height='17'
+                      viewBox='0 0 20 20'
+                      width='17'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        d='M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zM9 17.9C5.1 17.4 2 14 2 10c0-.6.1-1.2.2-1.8L7 13v1c0 1.1.9 2 2 2v1.9zm6.9-2.5c-.3-.8-1-1.4-1.9-1.4h-1v-3c0-.6-.4-1-1-1H6V8h2c.6 0 1-.4 1-1V5h2c1.1 0 2-.9 2-2v-.4c2.9 1.2 5 4.1 5 7.4 0 2.1-.8 4-2.1 5.4z'
+                        fill='currentColor'
+                        fill-rule='evenodd'
+                      ></path>
+                    </svg>
+                  </div>
+                  <span className='text-[14px] leading-[1.5] font-normal'>
+                    English
+                  </span>
+                  <div className='ml-2'>
+                    <svg
+                      fill='none'
+                      height='5'
+                      viewBox='0 0 9 5'
+                      width='9'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <path
+                        clip-rule='evenodd'
+                        d='M4.35156 2.80708L2.33394 0.789472C1.78653 0.24205 0.898985 0.242052 0.351563 0.789472L4.35156 4.78946L8.35156 0.789472C7.80411 0.242052 6.91658 0.242052 6.36917 0.789472L4.35156 2.80708Z'
+                        fill='currentColor'
+                        fill-rule='evenodd'
+                      ></path>
+                    </svg>
+                  </div>
+                </button>
+              </div>
+              <div className='items-center col-start-[second] text-[rgb(61,61,60)] col-end-[second] flex justify-end py-2 px-6  '>
+                <p className='text-[14px] my-0 ml-0 mr-2 '>
+                  Already have an account?
+                </p>
+                <div className='xxs:w-auto md:gap-8 inline-flex flex-col items-stretch gap-4 bg-transparent min-w-16 max-w-full w-full'>
+                  <a
+                    href='https://login.com'
+                    className='m-0 text-xs inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-[10px] py-[3px] transition text-[rgb(25,25,25)] rounded-md bg-transparent  border border-solid border-[rgb(25,25,25)] '
+                  >
+                    Log in
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* <div className='md:max-w-[542px] flex-col max-w-64 justify-self-center flex justify-center row-start-[second] col-start-[second] row-end-[second] col-end-[second] items-center'>
+              <div className='flex items-center justify-center h-20 md:max-w-60'></div>
+            </div> */}
+          </section>
         </div>
       </main>
     </div>

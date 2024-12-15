@@ -2,7 +2,7 @@ import React from 'react'
 export default function Footer() {
   return (
     <>
-      <footer className='bg-black text-slate-50 font-apercupro shadow-none'>
+      <footer className='bg-[rgb(25,25,25)] text-slate-50 font-apercupro shadow-none'>
         <h2 className='absolute h-0 w-0 p-0 overflow-hidden text-sm font-normal'>
           Footer area
         </h2>
