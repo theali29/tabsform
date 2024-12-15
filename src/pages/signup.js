@@ -74,7 +74,7 @@ export default function SignUp() {
                 <p className='lg:text-sm text-xs  my-0 ml-0 mr-2 '>
                   Already have an account?
                 </p>
-                <div className='xxs:w-auto md:gap-8 inline-flex flex-col items-stretch gap-4 bg-transparent min-w-16 max-w-full w-full'>
+                <div className='xxs:w-auto md:gap-8 inline-flex flex-col items-stretch gap-4 bg-transparent min-w-16 max-w-full'>
                   <a
                     href='https://login.com'
                     className='m-0 text-xs inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-[10px] py-[3px] transition text-[rgb(25,25,25)] rounded-md bg-transparent  border border-solid border-[rgb(25,25,25)] '
