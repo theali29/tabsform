@@ -511,7 +511,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <span className='whitespace-nowrap'>© Tabs</span>
+          <span className='whitespace-nowrap'>© Tabsform</span>
         </div>
       </footer>
     </>
