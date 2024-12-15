@@ -246,7 +246,7 @@ export default function Home() {
                     <div className='md:flex-row text-sm flex flex-col flex-wrap gap-6 content-center w-full xxs:w-auto items-center'>
                       <div className='flex-col inline-flex gap-4 max-w-full'>
                         <Link
-                          href='/signup'
+                          to='/signup'
                           className='inline-block  cursor-pointer font-medium border-solid border-2 border-white text-black bg-white rounded-xl  py-2 px-10'
                         >
                           Sign Up
