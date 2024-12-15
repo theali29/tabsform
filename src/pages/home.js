@@ -317,12 +317,12 @@ export default function Home() {
                 <div className='col-start-1 -col-end-1 md:justify-self-center'>
                   <div className='md:flex-row text-sm flex flex-col flex-wrap gap-6 content-center w-full xxs:w-auto items-center'>
                     <div className='flex-col inline-flex gap-4 max-w-full'>
-                      <a
-                        href='https://signup.com'
+                      <Link
+                        to='/signup'
                         className='inline-block  cursor-pointer font-medium border-solid border-2 border-white text-black bg-white rounded-xl  py-2 px-10'
                       >
                         Sign Up
-                      </a>
+                      </Link>
                     </div>
                     <div className='flex-col inline-flex gap-4 max-w-full underline'>
                       <a href='https:/plans.com'>Compare plans</a>
