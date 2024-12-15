@@ -34,7 +34,7 @@ export default function Navbar() {
             />
             <Link to='https://tabsform.com'>
               <span className='font-normal ml-2 text-3xl font-pacifico'>
-                Tabs
+                Tabsform
               </span>
             </Link>
           </div>
