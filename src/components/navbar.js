@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from '../expand.png'
-import Product from '../pages/product.js'
-import SignUp from '../pages/signup.js'
+// import Product from '../pages/product.js'
+// import SignUp from '../pages/signup.js'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)

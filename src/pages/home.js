@@ -6,11 +6,11 @@ import sugarcrm from '../images/sugarcrm.svg'
 import klaviyo from '../images/Klaviyo.svg'
 import cartier from '../images/Cartier.svg'
 import image from '../images/image2.png'
-import { Link, Routes, Route } from 'react-router-dom'
-import Product from './product.js'
-import SignUp from './signup.js'
+import { Link } from 'react-router-dom'
+// import Product from './product.js'
+// import SignUp from './signup.js'
 import React, { useEffect, useState } from 'react'
-import Layout from '../components/Layout.js'
+//import Layout from '../components/Layout.js'
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)

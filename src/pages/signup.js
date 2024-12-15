@@ -1,7 +1,5 @@
 import React from 'react'
-import Layout from '../components/Layout'
-import video from '../video/trailer1.mp4'
-import sign from '../images/signbrand.png'
+
 import logo from '../expand.png'
 import { Link } from 'react-router-dom'
 
