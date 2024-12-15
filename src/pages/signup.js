@@ -33,9 +33,9 @@ export default function SignUp() {
               </p>
             </div>
           </section>
-          <section className='lg:-ml-4 p-0 flex-grow flex-shrink flex-basis grid overflow-auto h-full rounded-r-none rounded-l-2xl relative flex flex-col min-h-[90vh] w-full bg-transparent '>
-            <div className='bg-[rgb(255,255,255)] grid relative w-full  grid-cols-[0px_auto] grid-rows-[52px_auto_52px] items-center '>
-              <div className='relative py-2 px-6 text-[rgb(61,61,60)]  items-center'>
+          <section className='lg:-ml-4 p-0 flex-grow flex-shrink grid overflow-auto h-full rounded-r-none rounded-l-2xl relative flex-col min-h-[90vh] w-full bg-transparent '>
+            <div className='bg-[rgb(255,255,255)] grid relative w-full custom-grid custom-grid-1 items-center '>
+              <div className='relative py-2 px-6 text-[rgb(61,61,60)]'>
                 <button className='bg-none  flex border-none p-0 text-inherit items-center'>
                   <div className='mr-2'>
                     <svg
@@ -85,10 +85,87 @@ export default function SignUp() {
                   </a>
                 </div>
               </div>
+              <div className='md:max-w-[542px] flex-col max-w-64 justify-self-center flex justify-center row-start-[second] col-start-[second] row-end-[second] col-end-[second] items-center'>
+                {/* <div className='flex items-center justify-center h-20 md:max-w-60'>
+                  <a
+                    aria-label='Tabsform'
+                    href='/'
+                    title='Tabsform'
+                    target='_top'
+                    className='leading-[0] text-none m-0 p-0 text-[100%]'
+                  >
+                    <div className=' leading-[0]'>
+                      <img
+                        src={logo}
+                        alt='Brand Logo'
+                        width={25}
+                        height={18}
+                        style={{ height: '28px' }}
+                      />
+                      <span className=''>Tabsform</span>
+                    </div>
+                  </a>
+                </div> */}
+                <div className='flex items-center z-[60] h-20 relative lg:flex-1'>
+                  <Link
+                    to='/'
+                    className='flex leading-[0] text-none m-0 p-0 text-[100%]'
+                  >
+                    <img
+                      src={logo}
+                      alt='Brand Logo'
+                      width={30}
+                      height={20}
+                      style={{ height: '30px' }}
+                    />
+
+                    <span className='font-normal ml-2 text-3xl font-pacifico'>
+                      Tabsform
+                    </span>
+                  </Link>
+                </div>
+                <h2 class='font-light text-2xl leading-9 text-[rgb(94,94,94)] mb-6 text-center max-w-full md:max-w-64'>
+                  Get better data with conversational forms, surveys, quizzes
+                  &amp; more.
+                </h2>
+                <div className='flex flex-col w-full'>
+                  <div className='border-[rgb(194,194,193)] bg-google-button  bg-no-repeat bg-custom-pos  text-[rgb(94,94,94)] mb-[15px]'>
+                    <a
+                      target='_self'
+                      data-qa='google-signin-btn'
+                      data-se='social-auth-google-button'
+                      href='/auth.com'
+                      className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent  border border-solid border-[rgb(25,25,25)]'
+                    >
+                      Sign up with google
+                    </a>
+                  </div>
+                  <div className='border-[rgb(194,194,193)] bg-microsoft-button  bg-no-repeat bg-custom-pos text-[rgb(94,94,94)] mb-[15px]'>
+                    <a
+                      target='_self'
+                      data-qa='microsoft-signin-btn'
+                      data-se='social-auth-microsoft-button'
+                      href='/auth.com'
+                      className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent  border border-solid border-[rgb(25,25,25)]'
+                    >
+                      Sign up with Microsoft
+                    </a>
+                  </div>
+                </div>
+                <div className='relative h-1 my-[25px] mx-0 text-center'>
+                  <span className='bg-[rgb(255,255,255)] text-[rgb(94,94,94)] text-sm py-0 px-[15px]'>
+                    OR
+                  </span>
+                </div>
+                <div className='flex flex-col w-full'>
+                  <div className='xxs:w-auto inline-flex flex-col items-stretch gap-4 bg-transparent min-w-[140px] max-w-full'>
+                    <button className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'>
+                      Sign up with email
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            {/* <div className='md:max-w-[542px] flex-col max-w-64 justify-self-center flex justify-center row-start-[second] col-start-[second] row-end-[second] col-end-[second] items-center'>
-              <div className='flex items-center justify-center h-20 md:max-w-60'></div>
-            </div> */}
           </section>
         </div>
       </main>
