@@ -25,14 +25,15 @@ export default function Navbar() {
       <div className='navbar-container fixed top-[60px] left-0 right-0 bg-white z-50 w-full'>
         <div className='m-auto flex justify-between items-center min-h-16 px-4 py-5 relative z-[60] lg:max-w-8xl'>
           <div className='flex items-center z-[60] relative lg:flex-1'>
-            <img
-              src={logo}
-              alt='Brand Logo'
-              width={25}
-              height={18}
-              style={{ height: '28px' }}
-            />
-            <Link to='https://tabsform.com'>
+            <Link to='/'>
+              <img
+                src={logo}
+                alt='Brand Logo'
+                width={25}
+                height={18}
+                style={{ height: '28px' }}
+              />
+
               <span className='font-normal ml-2 text-3xl font-pacifico'>
                 Tabsform
               </span>
