@@ -2,8 +2,34 @@ import React from 'react'
 
 import logo from '../expand.png'
 import { Link } from 'react-router-dom'
+// import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+
+// import { auth } from '../Firebase/firebase.config'
 
 export default function SignUp() {
+  // const signInWithGoogle = async (e) => {
+  //   const provider = new GoogleAuthProvider()
+  //   return signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       // This gives you a Google Access Token. You can use it to access the Google API.
+  //       const credential = GoogleAuthProvider.credentialFromResult(result)
+  //       const token = credential.accessToken
+  //       // The signed-in user info.
+  //       const user = result.user
+  //       // IdP data available using getAdditionalUserInfo(result)
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       // Handle Errors here.
+  //       const errorCode = error.code
+  //       const errorMessage = error.message
+  //       // The email of the user's account used.
+  //       const email = error.customData.email
+  //       // The AuthCredential type that was used.
+  //       const credential = GoogleAuthProvider.credentialFromError(error)
+  //       // ...
+  //     })
+  // }
   return (
     <div>
       <main>
@@ -122,21 +148,21 @@ export default function SignUp() {
                     </span>
                   </Link>
                 </div>
-                <h2 class='font-light text-2xl leading-9 text-[rgb(94,94,94)] mb-6 text-center max-w-full md:max-w-64'>
+                <h2 className='font-light text-2xl leading-9 text-[rgb(94,94,94)] mb-6 text-center max-w-full md:max-w-64'>
                   Get better data with conversational forms, surveys, quizzes
                   &amp; more.
                 </h2>
                 <div className='flex flex-col w-full'>
                   <div className='border-[rgb(194,194,193)] bg-google-button  bg-no-repeat bg-custom-pos  text-[rgb(94,94,94)] mb-[15px]'>
-                    <a
+                    <Link
                       target='_self'
                       data-qa='google-signin-btn'
                       data-se='social-auth-google-button'
-                      href='/auth.com'
+                      to='https://go.com'
                       className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent  border border-solid border-[rgb(25,25,25)]'
                     >
                       Sign up with google
-                    </a>
+                    </Link>
                   </div>
                   <div className='border-[rgb(194,194,193)] bg-microsoft-button  bg-no-repeat bg-custom-pos text-[rgb(94,94,94)] mb-[15px]'>
                     <a
