@@ -1,34 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import logo from '../expand.png'
-import { Link } from 'react-router-dom'
-// import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useNavigate, Link } from 'react-router-dom'
+import {
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+} from 'firebase/auth'
 
-// import { auth } from '../Firebase/firebase.config'
+import { auth } from '../Firebase/firebase.config'
 
 export default function SignUp() {
-  // const signInWithGoogle = async (e) => {
-  //   const provider = new GoogleAuthProvider()
-  //   return signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       // This gives you a Google Access Token. You can use it to access the Google API.
-  //       const credential = GoogleAuthProvider.credentialFromResult(result)
-  //       const token = credential.accessToken
-  //       // The signed-in user info.
-  //       const user = result.user
-  //       // IdP data available using getAdditionalUserInfo(result)
-  //       // ...
-  //     })
-  //     .catch((error) => {
-  //       // Handle Errors here.
-  //       const errorCode = error.code
-  //       const errorMessage = error.message
-  //       // The email of the user's account used.
-  //       const email = error.customData.email
-  //       // The AuthCredential type that was used.
-  //       const credential = GoogleAuthProvider.credentialFromError(error)
-  //       // ...
-  //     })
+  const navigate = useNavigate()
+  const signInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider()
+    try {
+      await signInWithRedirect(auth, provider)
+    } catch (error) {
+      console.error('Error during sign in:', error.message)
+    }
+  }
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        // Check if the user has been redirected back to the app after login
+        const result = await getRedirectResult(auth)
+        if (result) {
+          console.log('In the result')
+          const user = result.user
+          const credential = GoogleAuthProvider.credentialFromResult(result)
+          const token = credential.accessToken
+          console.log('User signed in:', user)
+          console.log('Access token:', token)
+          navigate('/')
+          // You can store user data in state or send it to your backend here
+        }
+      } catch (error) {
+        console.error('Error handling redirect result:', error.message)
+      }
+    }
+    console.log('Just checking for redirect result')
+
+    getUserData() // Call this function on mount to check for the redirect result
+  }, []) // Empty array means this runs only once when the component is mounted
+
+  // const handleGoogleSignIn = () => {
+  //   window.open('http://localhost:3000/auth/google', '_self') // Ensure '_self' to open in the same tab
   // }
   return (
     <div>
@@ -154,15 +171,24 @@ export default function SignUp() {
                 </h2>
                 <div className='flex flex-col w-full'>
                   <div className='border-[rgb(194,194,193)] bg-google-button  bg-no-repeat bg-custom-pos  text-[rgb(94,94,94)] mb-[15px]'>
-                    <Link
+                    {/* <Link
                       target='_self'
                       data-qa='google-signin-btn'
                       data-se='social-auth-google-button'
-                      to='https://go.com'
+                      to={signInWithGoogle()}
                       className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent  border border-solid border-[rgb(25,25,25)]'
                     >
                       Sign up with google
-                    </Link>
+                    </Link> */}
+                    <button
+                      target='_self'
+                      data-qa='google-signin-btn'
+                      data-se='social-auth-google-button'
+                      onClick={signInWithGoogle}
+                      className='m-0 text-base inline-block cursor-pointer justify-center text-center font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent border border-solid border-[rgb(25,25,25)]'
+                    >
+                      Sign up with Google
+                    </button>
                   </div>
                   <div className='border-[rgb(194,194,193)] bg-microsoft-button  bg-no-repeat bg-custom-pos text-[rgb(94,94,94)] mb-[15px]'>
                     <a
