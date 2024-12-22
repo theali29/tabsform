@@ -4,61 +4,69 @@ import logo from '../expand.png'
 import { useNavigate, Link } from 'react-router-dom'
 import {
   GoogleAuthProvider,
+  signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
 } from 'firebase/auth'
-
 import { auth } from '../Firebase/firebase.config'
 
 export default function SignUp() {
-  console.log('Component rendering')
-
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('Component mounted')
-    const checkRedirect = async () => {
-      console.log('Checking redirect...')
+    const handleRedirectResult = async () => {
+      console.log('Checking redirect result...')
       try {
         const result = await getRedirectResult(auth)
-        console.log('Got redirect result:', result)
         if (result) {
+          const user = result.user
           const credential = GoogleAuthProvider.credentialFromResult(result)
           const token = credential.accessToken
-          const user = result.user
-          console.log('Redirect successful:', { token, user })
-          navigate('/')
+
+          console.log('Redirect successful:', { user, token })
+          navigate('/') // Redirect to a home/dashboard page after successful sign-in
         } else {
-          console.log('No redirect result found')
+          console.log('No redirect result found.')
         }
       } catch (error) {
-        console.error('Error handling redirect:', error)
+        console.error('Error handling redirect result:', error.message)
       }
     }
 
-    checkRedirect()
+    handleRedirectResult()
   }, [navigate])
 
   const signInWithGoogle = async () => {
-    console.log('Button clicked')
     const provider = new GoogleAuthProvider()
-
     provider.setCustomParameters({
       prompt: 'select_account',
-      login_hint: 'user@example.com',
-      redirect_uri: 'http://localhost:3000/__/auth/handler',
     })
+    const isMobileSafari =
+      navigator.userAgent.includes('Safari') &&
+      navigator.userAgent.includes('Mobile')
+    const isSafari =
+      navigator.userAgent.includes('Safari') &&
+      !navigator.userAgent.includes('Chrome')
 
-    try {
-      console.log('Starting Google sign in redirect...')
-      await auth.signOut()
-      await signInWithRedirect(auth, provider)
-    } catch (error) {
-      console.error('Error during sign in:', {
-        code: error.code,
-        message: error.message,
-        fullError: error,
-      })
+    if (isMobileSafari || isSafari) {
+      try {
+        await signInWithRedirect(auth, provider)
+      } catch (error) {
+        console.error('Error during sign-in with redirect:', error.message)
+      }
+    } else {
+      console.log('Using signInWithPopup...')
+      try {
+        const result = await signInWithPopup(auth, provider)
+        const user = result.user
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential.accessToken
+
+        console.log('Popup sign-in successful:', { user, token })
+        navigate('/') // Redirect after successful login
+      } catch (error) {
+        console.error('Error during sign-in with popup:', error.message)
+      }
     }
   }
 
