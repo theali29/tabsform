@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import logo from '../expand.png'
 import { useNavigate, Link } from 'react-router-dom'
@@ -11,42 +11,57 @@ import {
 import { auth } from '../Firebase/firebase.config'
 
 export default function SignUp() {
+  console.log('Component rendering')
+
   const navigate = useNavigate()
-  const signInWithGoogle = async () => {
-    const provider = new GoogleAuthProvider()
-    try {
-      await signInWithRedirect(auth, provider)
-    } catch (error) {
-      console.error('Error during sign in:', error.message)
-    }
-  }
+
   useEffect(() => {
-    const getUserData = async () => {
+    console.log('Component mounted')
+    const checkRedirect = async () => {
+      console.log('Checking redirect...')
       try {
-        // Check if the user has been redirected back to the app after login
         const result = await getRedirectResult(auth)
+        console.log('Got redirect result:', result)
         if (result) {
-          console.log('In the result')
-          const user = result.user
           const credential = GoogleAuthProvider.credentialFromResult(result)
           const token = credential.accessToken
-          console.log('User signed in:', user)
-          console.log('Access token:', token)
+          const user = result.user
+          console.log('Redirect successful:', { token, user })
           navigate('/')
-          // You can store user data in state or send it to your backend here
+        } else {
+          console.log('No redirect result found')
         }
       } catch (error) {
-        console.error('Error handling redirect result:', error.message)
+        console.error('Error handling redirect:', error)
       }
     }
-    console.log('Just checking for redirect result')
 
-    getUserData() // Call this function on mount to check for the redirect result
-  }, []) // Empty array means this runs only once when the component is mounted
+    checkRedirect()
+  }, [navigate])
 
-  // const handleGoogleSignIn = () => {
-  //   window.open('http://localhost:3000/auth/google', '_self') // Ensure '_self' to open in the same tab
-  // }
+  const signInWithGoogle = async () => {
+    console.log('Button clicked')
+    const provider = new GoogleAuthProvider()
+
+    provider.setCustomParameters({
+      prompt: 'select_account',
+      login_hint: 'user@example.com',
+      redirect_uri: 'http://localhost:3000/__/auth/handler',
+    })
+
+    try {
+      console.log('Starting Google sign in redirect...')
+      await auth.signOut()
+      await signInWithRedirect(auth, provider)
+    } catch (error) {
+      console.error('Error during sign in:', {
+        code: error.code,
+        message: error.message,
+        fullError: error,
+      })
+    }
+  }
+
   return (
     <div>
       <main>
