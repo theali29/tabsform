@@ -9,7 +9,10 @@ export default function Product() {
             <h1>Start with better forms. End with better output.</h1>
           </div>
           <div className='text-center text-2xl items-center text-[rgb(25,25,25)] pt-4 '>
-            <p></p>
+            <p>
+              We are a team of developers, designers, and marketers who are
+              passionate about creating better forms.
+            </p>
           </div>
         </div>
       </div>
