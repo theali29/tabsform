@@ -11,7 +11,7 @@ export default function Product() {
           <div className='text-center text-xl items-center text-[rgb(25,25,25)] pt-4 '>
             <p className='mt-8 font-normal text-none text-xl leading-[1.2]'>
               Whether you need customers, feedback, or something else, Tabsform
-              helps you collect up to <strong>3.5x more data</strong> Try for
+              helps you collect up to <strong>3.5x more data</strong>. Try for
               free.
             </p>
           </div>
