@@ -10,8 +10,8 @@ export default function Product() {
           </div>
           <div className='text-center text-xl items-center text-[rgb(25,25,25)] pt-4 '>
             <p>
-              We are a team of developers, designers, and marketers who are
-              passionate about creating better forms.
+              Whether you need customers, feedback, or something else, Tabsform
+              helps you collect up to 3.5x more data. Try for free.
             </p>
           </div>
         </div>
