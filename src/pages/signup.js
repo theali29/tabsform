@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-
 import logo from '../expand.png'
 import { useNavigate, Link } from 'react-router-dom'
 import {
@@ -7,6 +6,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
+  signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
@@ -35,7 +35,39 @@ export default function SignUp() {
 
     handleRedirectResult()
   }, [navigate])
+  const handlelogin = async () => {
+    const provider = new signInWithEmailAndPassword()
+    provider.setCustomParameters({
+      prompt: 'select_account',
+    })
+    const isMobileSafari =
+      navigator.userAgent.includes('Safari') &&
+      navigator.userAgent.includes('Mobile')
+    const isSafari =
+      navigator.userAgent.includes('Safari') &&
+      !navigator.userAgent.includes('Chrome')
 
+    if (isMobileSafari || isSafari) {
+      try {
+        await signInWithRedirect(auth, provider)
+      } catch (error) {
+        console.error('Error during sign-in with redirect:', error.message)
+      }
+    } else {
+      console.log('Using signInWithPopup...')
+      try {
+        const result = await signInWithPopup(auth, provider)
+        const user = result.user
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential.accessToken
+
+        console.log('Popup sign-in successful:', { user, token })
+        navigate('/') // Redirect after successful login
+      } catch (error) {
+        console.error('Error during sign-in with popup:', error.message)
+      }
+    }
+  }
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
     provider.setCustomParameters({
