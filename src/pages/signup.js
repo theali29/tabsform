@@ -259,7 +259,7 @@ export default function SignUp() {
                 </div>
                 <div className='relative h-1 my-[25px] mx-0 text-center'>
                   <span className='bg-[rgb(255,255,255)] text-[rgb(94,94,94)] text-sm py-0 px-[15px]'>
-                    O
+                    OR
                   </span>
                 </div>
                 <div className='flex flex-col w-full'>
