@@ -259,13 +259,13 @@ export default function SignUp() {
                 </div>
                 <div className='relative h-1 my-[25px] mx-0 text-center'>
                   <span className='bg-[rgb(255,255,255)] text-[rgb(94,94,94)] text-sm py-0 px-[15px]'>
-                    OR
+                    O
                   </span>
                 </div>
                 <div className='flex flex-col w-full'>
                   <div className='xxs:w-auto inline-flex flex-col items-stretch gap-4 bg-transparent min-w-[140px] max-w-full'>
                     <button
-                      className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'
+                      className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'
                       onClick={handlelogin}
                     >
                       Sign up with email
