@@ -18,7 +18,7 @@ export default function SignUp() {
     console.log('Initial auth state:', auth.currentUser)
 
     const checkRedirect = async () => {
-      console.log('Starting redirect check...')
+      console.log('Starting redirect check..')
       try {
         // Wait for auth to initialize with detailed logging
         await new Promise((resolve, reject) => {
