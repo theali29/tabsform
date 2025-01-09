@@ -7,6 +7,7 @@ import {
   signInWithRedirect,
   getRedirectResult,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
@@ -14,26 +15,66 @@ export default function SignUp() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const handleRedirectResult = async () => {
-      try {
-        const result = await getRedirectResult(auth)
-        if (result) {
-          const user = result.user
-          const credential = GoogleAuthProvider.credentialFromResult(result)
-          const token = credential.accessToken
+    console.log('Initial auth state:', auth.currentUser)
 
-          console.log('Redirect successful:', { user, token })
-          navigate('/') // Redirect to a home/dashboard page after successful sign-in
+    const checkRedirect = async () => {
+      console.log('Starting redirect check...')
+      try {
+        // Wait for auth to initialize with detailed logging
+        await new Promise((resolve, reject) => {
+          console.log('Waiting for auth state...')
+          const unsubscribe = onAuthStateChanged(
+            auth,
+            (user) => {
+              console.log(
+                'Auth state changed:',
+                user ? 'User exists' : 'No user'
+              )
+              unsubscribe()
+              resolve(user)
+            },
+            (error) => {
+              console.log('Auth state error:', error)
+              unsubscribe()
+              reject(error)
+            }
+          )
+        })
+
+        console.log('Auth initialized, checking redirect result...')
+        const result = await getRedirectResult(auth)
+        console.log('Raw redirect result:', result)
+
+        if (result) {
+          const credential = GoogleAuthProvider.credentialFromResult(result)
+          console.log('Credential details:', {
+            accessToken: credential.accessToken ? 'exists' : 'missing',
+            providerId: credential.providerId,
+          })
+          console.log('User details:', {
+            uid: result.user.uid,
+            email: result.user.email,
+          })
+          navigate('/')
         } else {
-          console.log('No redirect result found.')
+          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            console.log('Mobile device detected, no redirect result')
+            console.log('Current URL:', window.location.href)
+            console.log('User Agent:', navigator.userAgent)
+          }
         }
       } catch (error) {
-        console.error('Error handling redirect result:', error.message)
+        console.error('Detailed error in checkRedirect:', {
+          code: error.code,
+          message: error.message,
+          stack: error.stack,
+        })
       }
     }
 
-    handleRedirectResult()
+    checkRedirect()
   }, [navigate])
+
   const handlelogin = async () => {
     const provider = new signInWithEmailAndPassword()
     provider.setCustomParameters({
@@ -72,32 +113,29 @@ export default function SignUp() {
     provider.setCustomParameters({
       prompt: 'select_account',
     })
-    const isMobileSafari =
-      navigator.userAgent.includes('Safari') &&
-      navigator.userAgent.includes('Mobile')
-    const isSafari =
-      navigator.userAgent.includes('Safari') &&
-      !navigator.userAgent.includes('Chrome')
 
-    if (isMobileSafari || isSafari) {
-      try {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    console.log('Device type:', isMobile ? 'Mobile' : 'Desktop')
+
+    try {
+      if (isMobile) {
+        console.log('Initiating mobile redirect sign-in...')
         await signInWithRedirect(auth, provider)
-      } catch (error) {
-        console.error('Error during sign-in with redirect:', error.message)
-      }
-    } else {
-      console.log('Using signInWithPopup...')
-      try {
+        // Note: The page will redirect here, so any code after this won't execute on mobile
+      } else {
+        console.log('Initiating desktop popup sign-in...')
         const result = await signInWithPopup(auth, provider)
-        const user = result.user
-        const credential = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
-
-        console.log('Popup sign-in successful:', { user, token })
-        navigate('/') // Redirect after successful login
-      } catch (error) {
-        console.error('Error during sign-in with popup:', error.message)
+        if (result) {
+          console.log('Popup sign-in successful:', result.user.uid)
+          navigate('/')
+        }
       }
+    } catch (error) {
+      console.error('Sign-in error details:', {
+        code: error.code,
+        message: error.message,
+        stack: error.stack,
+      })
     }
   }
 
