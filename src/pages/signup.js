@@ -7,7 +7,6 @@ import {
   signInWithRedirect,
   getRedirectResult,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
@@ -23,22 +22,22 @@ export default function SignUp() {
         // Wait for auth to initialize with detailed logging
         await new Promise((resolve, reject) => {
           console.log('Waiting for auth state...')
-          const unsubscribe = onAuthStateChanged(
-            auth,
-            (user) => {
-              console.log(
-                'Auth state changed:',
-                user ? 'User exists' : 'No user'
-              )
-              unsubscribe()
-              resolve(user)
-            },
-            (error) => {
-              console.log('Auth state error:', error)
-              unsubscribe()
-              reject(error)
-            }
-          )
+          // const unsubscribe = onAuthStateChanged(
+          //   auth,
+          //   (user) => {
+          //     console.log(
+          //       'Auth state changed:',
+          //       user ? 'User exists' : 'No user'
+          //     )
+          //     unsubscribe()
+          //     resolve(user)
+          //   },
+          //   (error) => {
+          //     console.log('Auth state error:', error)
+          //     unsubscribe()
+          //     reject(error)
+          //   }
+          // )
         })
 
         console.log('Auth initialized, checking redirect result...')
