@@ -4,6 +4,7 @@ import Home from './pages/home'
 import Layout from './components/Layout'
 import Product from './pages/product'
 import SignUp from './pages/signup'
+import Login from './pages/login'
 import { Routes, Route } from 'react-router-dom'
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             </Layout>
           }
         />
+        <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>
     </>
