@@ -6,8 +6,6 @@ import {
   signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
@@ -15,105 +13,32 @@ export default function SignUp() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('Initial auth state:', auth.currentUser)
-
     const checkRedirect = async () => {
-      console.log('Starting redirect check..')
+      console.log('Checking redirect result...')
       try {
-        // Wait for auth to initialize with detailed logging
-        await new Promise((resolve, reject) => {
-          console.log('Waiting for auth state...')
-          const unsubscribe = onAuthStateChanged(
-            auth,
-            (user) => {
-              console.log(
-                'Auth state changed:',
-                user ? 'User exists' : 'No user'
-              )
-              unsubscribe()
-              resolve(user)
-            },
-            (error) => {
-              console.log('Auth state error:', error)
-              unsubscribe()
-              reject(error)
-            }
-          )
-        })
-
-        console.log('Auth initialized, checking redirect result...')
         const result = await getRedirectResult(auth)
-        console.log('Raw redirect result:', result)
-
         if (result) {
+          // User signed in successfully with redirect
+          const user = result.user
           const credential = GoogleAuthProvider.credentialFromResult(result)
-          console.log('Credential details:', {
-            accessToken: credential.accessToken ? 'exists' : 'missing',
-            providerId: credential.providerId,
-          })
-          console.log('User details:', {
-            uid: result.user.uid,
-            email: result.user.email,
-          })
-          navigate('/')
+          const token = credential.accessToken
+
+          console.log('Redirect sign-in successful:', { user, token })
+          navigate('/') // Navigate after successful sign-in
         } else {
-          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            console.log('Mobile device detected, no redirect result')
-            console.log('Current URL:', window.location.href)
-            console.log('User Agent:', navigator.userAgent)
-          }
+          console.log('No redirect result found.')
         }
       } catch (error) {
-        console.error('Detailed error in checkRedirect:', {
-          code: error.code,
-          message: error.message,
-          stack: error.stack,
-        })
+        console.error('Error handling redirect result:', error.message)
       }
     }
 
     checkRedirect()
   }, [navigate])
 
-  const handlelogin = async () => {
-    const provider = new signInWithEmailAndPassword()
-    provider.setCustomParameters({
-      prompt: 'select_account',
-    })
-    const isMobileSafari =
-      navigator.userAgent.includes('Safari') &&
-      navigator.userAgent.includes('Mobile')
-    const isSafari =
-      navigator.userAgent.includes('Safari') &&
-      !navigator.userAgent.includes('Chrome')
-
-    if (isMobileSafari || isSafari) {
-      try {
-        await signInWithRedirect(auth, provider)
-      } catch (error) {
-        console.error('Error during sign-in with redirect:', error.message)
-      }
-    } else {
-      console.log('Using signInWithPopup...')
-      try {
-        const result = await signInWithPopup(auth, provider)
-        const user = result.user
-        const credential = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
-
-        console.log('Popup sign-in successful:', { user, token })
-        console.log('This is user:', { user })
-
-        console.log('User:', user.displayName)
-
-        navigate('/') // Redirect after successful login
-      } catch (error) {
-        console.error('Error during sign-in with popup:', error.message)
-      }
-    }
-  }
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
+
     provider.setCustomParameters({
       prompt: 'select_account',
     })
@@ -123,23 +48,20 @@ export default function SignUp() {
 
     try {
       if (isMobile) {
-        console.log('Initiating mobile redirect sign-in...')
+        console.log('Using redirect for mobile...')
         await signInWithRedirect(auth, provider)
-        // Note: The page will redirect here, so any code after this won't execute on mobile
       } else {
-        console.log('Initiating desktop popup sign-in...')
+        console.log('Using popup for desktop...')
         const result = await signInWithPopup(auth, provider)
-        if (result) {
-          console.log('Popup sign-in successful:', result.user.uid)
-          navigate('/')
-        }
+        const user = result.user
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential.accessToken
+
+        console.log('Popup sign-in successful:', { user, token })
+        navigate('/') // Navigate after successful login
       }
     } catch (error) {
-      console.error('Sign-in error details:', {
-        code: error.code,
-        message: error.message,
-        stack: error.stack,
-      })
+      console.error('Sign-in error:', error.message)
     }
   }
 
@@ -305,10 +227,7 @@ export default function SignUp() {
                 </div>
                 <div className='flex flex-col w-full'>
                   <div className='xxs:w-auto inline-flex flex-col items-stretch gap-4 bg-transparent min-w-[140px] max-w-full'>
-                    <button
-                      className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'
-                      onClick={handlelogin}
-                    >
+                    <button className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'>
                       Sign up with email
                     </button>
                   </div>
