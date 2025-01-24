@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth'
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCqgSiwOhgeaphrT6Zl70euwYCkrQwW1Os',
-  authDomain: 'tabsform-71b83.firebaseapp.com',
+  authDomain: 'tabsform.netlify.app',
   projectId: 'tabsform-71b83',
   storageBucket: 'tabsform-71b83.firebasestorage.app',
   messagingSenderId: '615515986380',
