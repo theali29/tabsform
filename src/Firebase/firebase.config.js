@@ -16,8 +16,8 @@ const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain:
     process.env.NODE_ENV === 'production'
-      ? process.env.REACT_APP_FIREBASE_AUTH_DOMAIN_PROD
-      : process.env.REACT_APP_FIREBASE_AUTH_DOMAIN_DEV, // Localhost for development
+      ? 'tabsform.netlify.app' // Production domain
+      : 'tabsform-71b83.firebaseapp.com', // Localhost for development
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
