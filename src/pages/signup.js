@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-
+import logo from '../expand.png'
 import {
   GoogleAuthProvider,
   signInWithPopup,
