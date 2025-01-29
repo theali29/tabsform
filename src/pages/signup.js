@@ -14,8 +14,6 @@ export default function SignUp() {
 
   useEffect(() => {
     const checkRedirect = async () => {
-      // console.log('NODE_ENV:', process.env.NODE_ENV)
-      // console.log(process.env.REACT_APP_FIREBASE_AUTH_DOMAIN_DEV)
       console.log('Checking redirect result...')
 
       try {

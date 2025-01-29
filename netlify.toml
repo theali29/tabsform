@@ -4,7 +4,6 @@ to = "https://tabsform-71b83.firebaseapp.com/__/auth/:splat"
 status = 200
 force = true
 
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
