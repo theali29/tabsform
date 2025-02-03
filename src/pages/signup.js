@@ -217,9 +217,10 @@ export default function SignUp() {
                   Get better data with conversational forms, surveys, quizzes
                   &amp; more.
                 </h2>
-                <div className='flex flex-col w-full'>
-                  <div className='border-[rgb(194,194,193)] bg-google-button  bg-no-repeat bg-custom-pos  text-[rgb(94,94,94)] mb-[15px]'>
-                    {/* <Link
+                {!showEmailForm && (
+                  <div className='flex flex-col w-full'>
+                    <div className='border-[rgb(194,194,193)] bg-google-button  bg-no-repeat bg-custom-pos  text-[rgb(94,94,94)] mb-[15px]'>
+                      {/* <Link
                       target='_self'
                       data-qa='google-signin-btn'
                       data-se='social-auth-google-button'
@@ -228,48 +229,56 @@ export default function SignUp() {
                     >
                       Sign up with google
                     </Link> */}
-                    <button
-                      target='_self'
-                      data-qa='google-signin-btn'
-                      data-se='social-auth-google-button'
-                      onClick={signInWithGoogle}
-                      className='m-0 text-base inline-block cursor-pointer justify-center text-center font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent border border-solid border-[rgb(25,25,25)]'
-                    >
-                      Sign up with Google
-                    </button>
+
+                      <button
+                        target='_self'
+                        data-qa='google-signin-btn'
+                        data-se='social-auth-google-button'
+                        onClick={signInWithGoogle}
+                        className='m-0 text-base inline-block cursor-pointer justify-center text-center font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent border border-solid border-[rgb(25,25,25)]'
+                      >
+                        Sign up with Google
+                      </button>
+                    </div>
+
+                    <div className='border-[rgb(194,194,193)] bg-microsoft-button  bg-no-repeat bg-custom-pos text-[rgb(94,94,94)] mb-[15px]'>
+                      <a
+                        target='_self'
+                        data-qa='microsoft-signin-btn'
+                        data-se='social-auth-microsoft-button'
+                        href='/auth.com'
+                        className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent  border border-solid border-[rgb(25,25,25)]'
+                      >
+                        Sign up with Microsoft
+                      </a>
+                    </div>
                   </div>
-                  <div className='border-[rgb(194,194,193)] bg-microsoft-button  bg-no-repeat bg-custom-pos text-[rgb(94,94,94)] mb-[15px]'>
-                    <a
-                      target='_self'
-                      data-qa='microsoft-signin-btn'
-                      data-se='social-auth-microsoft-button'
-                      href='/auth.com'
-                      className='m-0 text-base  inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(25,25,25)] rounded-[10px] bg-transparent  border border-solid border-[rgb(25,25,25)]'
-                    >
-                      Sign up with Microsoft
-                    </a>
+                )}
+                {!showEmailForm && (
+                  <div className='relative h-1 my-[25px] mx-0 text-center'>
+                    <span className='bg-[rgb(255,255,255)] text-[rgb(94,94,94)] text-sm py-0 px-[15px]'>
+                      OR
+                    </span>
                   </div>
-                </div>
-                <div className='relative h-1 my-[25px] mx-0 text-center'>
-                  <span className='bg-[rgb(255,255,255)] text-[rgb(94,94,94)] text-sm py-0 px-[15px]'>
-                    OR
-                  </span>
-                </div>
-                <div className='flex flex-col w-full'>
-                  <div className='xxs:w-auto inline-flex flex-col items-stretch gap-4 bg-transparent min-w-[140px] max-w-full'>
-                    <button
-                      className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'
-                      onClick={() => setShowEmailForm(!showEmailForm)}
-                    >
-                      Sign up with email
-                    </button>
+                )}
+                {!showEmailForm && (
+                  <div className='flex flex-col w-full'>
+                    <div className='xxs:w-auto inline-flex flex-col items-stretch gap-4 bg-transparent min-w-[140px] max-w-full'>
+                      <button
+                        className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'
+                        onClick={() => setShowEmailForm(!showEmailForm)}
+                      >
+                        Sign up with email
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
+
                 {/* Email form */}
                 {showEmailForm && (
                   <form
                     onSubmit={signUpWithEmail}
-                    className='flex flex-col w-ful mt-4'
+                    className='flex flex-col w-full mt-4'
                   >
                     <input
                       type='email'
@@ -277,7 +286,7 @@ export default function SignUp() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className='border border-gray-300 p-2 mb-2 rounded-md'
+                      className='border border-gray-300 p-2 mb-4 rounded-sm'
                     />
                     <input
                       type='password'
@@ -285,13 +294,13 @@ export default function SignUp() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
-                      className='border border-gray-300 p-2 mb-2 rounded-md'
+                      className='border border-gray-300 p-2 mb-4 rounded-md'
                     />
                     <button
                       type='submit'
                       className='bg-[rgb(25,25,25)] text-white p-2 rounded-md'
                     >
-                      Submit
+                      Create my account
                     </button>
                   </form>
                 )}
