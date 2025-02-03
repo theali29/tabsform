@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import logo from '../expand.png'
 import {
@@ -7,11 +7,13 @@ import {
   signInWithRedirect,
   getRedirectResult,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
 export default function SignUp() {
   const navigate = useNavigate()
+  const [showEmailForm, setShowEmailForm] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
@@ -83,6 +85,7 @@ export default function SignUp() {
         password
       )
       const user = userCredential.user
+      await sendEmailVerification(user)
       console.log('User created:', user)
       setMessage(
         'Account created successfully, Please check your email for verification'
@@ -254,11 +257,47 @@ export default function SignUp() {
                 </div>
                 <div className='flex flex-col w-full'>
                   <div className='xxs:w-auto inline-flex flex-col items-stretch gap-4 bg-transparent min-w-[140px] max-w-full'>
-                    <button className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'>
+                    <button
+                      className='m-0 text-base inline-block cursor-pointer justify-center text-center  font-medium w-full leading-[1.5] px-4 py-2 transition text-[rgb(255,255,255)] rounded-[10px] bg-[rgb(25,25,25)]  border border-solid border-[rgb(25,25,25)]'
+                      onClick={() => setShowEmailForm(!showEmailForm)}
+                    >
                       Sign up with email
                     </button>
                   </div>
                 </div>
+                {/* Email form */}
+                {showEmailForm && (
+                  <form
+                    onSubmit={signUpWithEmail}
+                    className='flex flex-col w-ful mt-4'
+                  >
+                    <input
+                      type='email'
+                      placeholder='Email'
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className='border border-gray-300 p-2 mb-2 rounded-md'
+                    />
+                    <input
+                      type='password'
+                      placeholder='Password'
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      className='border border-gray-300 p-2 mb-2 rounded-md'
+                    />
+                    <button
+                      type='submit'
+                      className='bg-[rgb(25,25,25)] text-white p-2 rounded-md'
+                    >
+                      Submit
+                    </button>
+                  </form>
+                )}
+                {/* Error and Success Messages */}
+                {message && <p className='text-green-500 mt-2'>{message}</p>}
+                {error && <p className='text-red-500 mt-2'>{error}</p>}
               </div>
             </div>
           </section>
