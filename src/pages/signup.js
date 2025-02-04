@@ -8,6 +8,7 @@ import {
   getRedirectResult,
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  onAuthStateChanged,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
@@ -45,6 +46,21 @@ export default function SignUp() {
     checkRedirect()
   }, [navigate])
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        await user.reload()
+        if (user.emailVerified) {
+          console.log('Email verified')
+          navigate('/') // Navigate after successful login
+        } else {
+          console.log('Email not verified. Prompting user...')
+          setMessage('Please verify your email')
+        }
+      }
+    })
+    return () => unsubscribe() // Cleanup function on component unmount
+  }, [navigate])
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
 
@@ -88,7 +104,7 @@ export default function SignUp() {
       await sendEmailVerification(user)
       console.log('User created:', user)
       setMessage(
-        'Account created successfully, Please check your email for verification'
+        'Account created successfully, Please check your email for verification before logging in'
       )
     } catch (error) {
       setError('Error signing up:', error.message)
