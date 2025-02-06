@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   onAuthStateChanged,
+  fetchSignInMethodsForEmail,
 } from 'firebase/auth'
 import { auth } from '../Firebase/firebase.config'
 
@@ -50,12 +51,13 @@ export default function SignUp() {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         await user.reload()
-        if (user.emailVerified) {
-          console.log('Email verified')
-          navigate('/')
+        if (!user.emailVerified) {
+          setMessage('Please verify your email before signing in.')
+          setError('Email not verified. Check your inbox.')
+          auth.signOut() // Sign them out immediately
         } else {
-          console.log('Email not verified. Prompting user...')
-          setMessage('Please verify your email')
+          console.log('Email verified. Redirecting...')
+          navigate('/')
         }
       }
     })
@@ -87,6 +89,13 @@ export default function SignUp() {
         console.log('Using popup for desktop...')
         const result = await signInWithPopup(auth, provider)
         const user = result.user
+        const signInMethods = await fetchSignInMethodsForEmail(auth, user.email)
+        if (signInMethods.length > 0 && !signInMethods.includes('google.com')) {
+          throw new Error(
+            'Email already registered with a different method. Please sign in using email and password'
+          )
+        }
+
         const credential = GoogleAuthProvider.credentialFromResult(result)
         const token = credential.accessToken
 
@@ -94,7 +103,14 @@ export default function SignUp() {
         navigate('/') // Navigate after successful login
       }
     } catch (error) {
-      console.error('Sign-in error:', error.message)
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        console.log(
+          'This email is already registered with another method. Try logging in using email/password.'
+        )
+      } else {
+        console.error('Sign-in error:', error.message)
+        setError(error.message)
+      }
     }
   }
 
@@ -102,29 +118,30 @@ export default function SignUp() {
     e.preventDefault()
     setError(null)
     setMessage(null)
-    console.log('Email:', email)
-    console.log('Password:', password)
-    const checkEmail = auth.currentUser.email
-    console.log('Current User:', checkEmail)
-    if (email === auth.currentUser.email) {
-      setError('User already exists')
-    } else {
-      try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        )
-        const user = userCredential.user
-        await sendEmailVerification(user)
+    //If user already exists
 
-        console.log('User created:', user)
-        setMessage(
-          'Account created successfully, Please check your email for verification before logging in'
-        )
-      } catch (error) {
-        setError('Error signing up:', error.message)
+    try {
+      console.log('Checking if email is already registered')
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email)
+      if (signInMethods.length > 0) {
+        setError('Email already registered')
+        return
       }
+      //If no exsiting user, proceed with creating a new user
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      const user = userCredential.user
+      await sendEmailVerification(user)
+
+      console.log('User created:', user)
+      setMessage(
+        'Account created successfully, Please check your email for verification before logging in'
+      )
+    } catch (error) {
+      setError('Error signing up:', error.message)
     }
   }
 
