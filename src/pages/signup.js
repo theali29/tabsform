@@ -52,7 +52,7 @@ export default function SignUp() {
         await user.reload()
         if (user.emailVerified) {
           console.log('Email verified')
-          navigate('/') // Navigate after successful login
+          navigate('/')
         } else {
           console.log('Email not verified. Prompting user...')
           setMessage('Please verify your email')
@@ -61,6 +61,14 @@ export default function SignUp() {
     })
     return () => unsubscribe() // Cleanup function on component unmount
   }, [navigate])
+  const resendVerificationEmail = async () => {
+    const user = auth.currentUser
+    if (user && !user.emailVerified) {
+      await sendEmailVerification(user)
+      setMessage('Verification email resent. Please check your email')
+    }
+  }
+
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
 
@@ -94,20 +102,29 @@ export default function SignUp() {
     e.preventDefault()
     setError(null)
     setMessage(null)
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      const user = userCredential.user
-      await sendEmailVerification(user)
-      console.log('User created:', user)
-      setMessage(
-        'Account created successfully, Please check your email for verification before logging in'
-      )
-    } catch (error) {
-      setError('Error signing up:', error.message)
+    console.log('Email:', email)
+    console.log('Password:', password)
+    const checkEmail = auth.currentUser.email
+    console.log('Current User:', checkEmail)
+    if (email === auth.currentUser.email) {
+      setError('User already exists')
+    } else {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        )
+        const user = userCredential.user
+        await sendEmailVerification(user)
+
+        console.log('User created:', user)
+        setMessage(
+          'Account created successfully, Please check your email for verification before logging in'
+        )
+      } catch (error) {
+        setError('Error signing up:', error.message)
+      }
     }
   }
 
