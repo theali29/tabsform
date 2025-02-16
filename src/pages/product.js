@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import BrandCarousel from '../components/brandCarousel'
+import content from '../images/version1.png'
 export default function Product() {
   return (
     <div className='bg-white pt-[120px]'>
@@ -35,6 +36,17 @@ export default function Product() {
               <h1 className='text-4xl xl:text-[56px] md:text-[42px] lg:text-[58px] '>
                 <span>Build forms people fill out</span>
               </h1>
+            </div>
+            <div className='flex-col lg:flex-row flex py-8 lg:px-4  justify-center items-center '>
+              <div className='lg:pr-6 pb-4'>
+                <img src={content} width='387px' alt='Identification' />
+              </div>
+              <div className='lg:pr-6 pb-4'>
+                <img src={content} width='387px' alt='Identification' />
+              </div>
+              <div className='lg:pr-6 pb-4'>
+                <img src={content} width='387px' alt='Identification' />
+              </div>
             </div>
           </div>
         </div>
