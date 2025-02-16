@@ -4,7 +4,7 @@ import BrandCarousel from '../components/brandCarousel'
 export default function Product() {
   return (
     <div className='bg-white pt-[120px]'>
-      <div className='container mx-auto px-4 py-8 '>
+      <div className='container mx-auto px-4 py-8'>
         <div className='text-center col-start-1 -col-end-1 text-xl lg:col-start-3 lg:-col-end-3 md:col-start-2 md:-col-end-2 flex flex-col grid-rows-1 justify-center  items-center text-[rgb(25,25,25)] pt-4 mt-6 '>
           <h1 className='text-5xl xl:text-[68px] xl:leading-[1] lg:leading-[1.1] lg:text-[64px] md:text-[48px] text-[rgb(25,25,25)]'>
             <span>Forms that feel like conversations</span>
@@ -36,7 +36,6 @@ export default function Product() {
                 <span>Build forms people fill out</span>
               </h1>
             </div>
-            <div></div>
           </div>
         </div>
       </div>
