@@ -39,7 +39,7 @@ export default function Product() {
                 <span>Build forms people fill out</span>
               </h1>
             </div>
-            <div className='flex flex-col lg:grid lg:grid-cols-3 lg:gap-4 py-8 lg:px-4 justify-center items-start'>
+            <div className='flex flex-col lg:grid lg:grid-cols-3 lg:gap-4 py-8 lg:px-4 justify-start items-start'>
               <div className='flex flex-col items-start w-full min-h-40'>
                 <div className='pb-4'>
                   <img
@@ -50,15 +50,17 @@ export default function Product() {
                     alt='Img-cover'
                   />
                 </div>
-                <div className='flex flex-col justify-start items-start p-2'>
-                  <h1 className='text-2xl font-normal'>
-                    <span>Ask questions naturally</span>
-                  </h1>
-                  <p>
-                    Make form-filling feel effortless by replacing walls of
-                    questions with just one at a time. By mirroring a real
-                    conversation, you get more engagement.
-                  </p>
+                <div className='flex flex-col flex-nowrap'>
+                  <div className='flex-col flex-nowrap relative '>
+                    <h1 className='text-xl font-semibold'>
+                      <span>Ask questions naturally</span>
+                    </h1>
+                    <p className='text-base leading-6'>
+                      Make form-filling feel effortless by replacing walls of
+                      questions with just one at a time. By mirroring a real
+                      conversation, you get more engagement.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -72,15 +74,17 @@ export default function Product() {
                     alt='Img-cover'
                   />
                 </div>
-                <div className='flex flex-col justify-start items-start p-2'>
-                  <h1 className='text-2xl font-normal'>
-                    <span>Ask questions naturally</span>
-                  </h1>
-                  <p>
-                    Make form-filling feel effortless by replacing walls of
-                    questions with just one at a time. By mirroring a real
-                    conversation, you get more engagement.
-                  </p>
+                <div className='flex flex-col flex-nowrap'>
+                  <div className='flex-col flex-nowrap relative '>
+                    <h1 className='text-xl font-semibold'>
+                      <span>Ask questions naturally</span>
+                    </h1>
+                    <p>
+                      Make form-filling feel effortless by replacing walls of
+                      questions with just one at a time. By mirroring a real
+                      conversation, you get more engagement.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -94,15 +98,17 @@ export default function Product() {
                     alt='Img-cover'
                   />
                 </div>
-                <div className='flex flex-col justify-start items-start p-2'>
-                  <h1 className='text-2xl font-normal'>
-                    <span>Ask questions naturally</span>
-                  </h1>
-                  <p>
-                    Make form-filling feel effortless by replacing walls of
-                    questions with just one at a time. By mirroring a real
-                    conversation, you get more engagement.
-                  </p>
+                <div className='flex flex-col flex-nowrap'>
+                  <div className='flex-col flex-nowrap relative '>
+                    <h1 className='text-xl font-semibold'>
+                      <span>Ask questions naturally</span>
+                    </h1>
+                    <p>
+                      Make form-filling feel effortless by replacing walls of
+                      questions with just one at a time. By mirroring a real
+                      conversation, you get more engagement.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

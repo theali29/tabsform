@@ -35,6 +35,9 @@ module.exports = {
         '6-span-2': ' 6 / span 2',
         '9-span-2': ' 9 / span 2',
       },
+      spacing: {
+        'custom-gap': 'grid-row-gap: var(--primitives--spacers--050)',
+      },
       screens: {
         xxs: '430px',
         xl: '1280px', // Customize your screen size breakpoint
