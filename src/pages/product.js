@@ -77,12 +77,12 @@ export default function Product() {
                 <div className='flex flex-col flex-nowrap'>
                   <div className='flex-col flex-nowrap relative '>
                     <h1 className='text-xl font-semibold'>
-                      <span>Ask questions naturally</span>
+                      <span>Match your brand</span>
                     </h1>
                     <p>
-                      Make form-filling feel effortless by replacing walls of
-                      questions with just one at a time. By mirroring a real
-                      conversation, you get more engagement.
+                      From logos to colors, upload your brand assets to
+                      customize forms in a click. When they’re instantly
+                      recognizable, people trust that it’s really you.
                     </p>
                   </div>
                 </div>
@@ -101,12 +101,12 @@ export default function Product() {
                 <div className='flex flex-col flex-nowrap'>
                   <div className='flex-col flex-nowrap relative '>
                     <h1 className='text-xl font-semibold'>
-                      <span>Ask questions naturally</span>
+                      <span>Adapt in real time</span>
                     </h1>
                     <p>
-                      Make form-filling feel effortless by replacing walls of
-                      questions with just one at a time. By mirroring a real
-                      conversation, you get more engagement.
+                      Treat everyone as individuals so they feel encouraged to
+                      fill out your form. Call form takers by their name and ask
+                      follow-up questions based on their answers.
                     </p>
                   </div>
                 </div>
