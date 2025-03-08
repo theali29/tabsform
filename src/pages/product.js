@@ -95,7 +95,7 @@ export default function Product() {
                     height='376px'
                     className='object-cover w-full h-full'
                     src='https://cdn.prod.website-files.com/66ffe2174aa8e8d5661c2708/672cc46d5163d56a15e31965_PhotoBuild_forms_people_-2.webp'
-                    alt='Img-cover'
+                    alt=''
                   />
                 </div>
                 <div className='flex flex-col flex-nowrap'>
