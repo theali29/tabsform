@@ -6,6 +6,7 @@ import Product from './pages/product'
 import SignUp from './pages/signup'
 import Login from './pages/login'
 import { Routes, Route } from 'react-router-dom'
+import Pricing from './pages/pricing'
 function App() {
   return (
     <>
@@ -23,6 +24,15 @@ function App() {
           element={
             <Layout>
               <Product />
+            </Layout>
+          }
+        />
+
+        <Route
+          path='/pricing'
+          element={
+            <Layout>
+              <Pricing />
             </Layout>
           }
         />

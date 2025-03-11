@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import BrandCarousel from '../components/brandCarousel'
 import content from '../images/version1.png'
-export default function Product() {
+export default function Pricing() {
   return (
     <div className='bg-white pt-[120px]'>
       <div className='container mx-auto px-4 py-8'>
@@ -13,10 +13,9 @@ export default function Product() {
             </h1>
             <div className='text-center text-xl items-center text-[rgb(25,25,25)] pt-4 '>
               <p className='mt-8 font-normal text-none xl:text-xl xxs:text-base leading-[1.2]'>
-                Looking for advanced features? Check out our latest
-                <strong className='underline'> Growth plans</strong>
-                or get a taste with our{' '}
-                <strong className='underline'>Free plan</strong>
+                Looking for advanced features? Check out our latest{' '}
+                <strong className='underline'>Growth plans</strong> or get a
+                taste with our <strong className='underline'>Free plan</strong>
               </p>
             </div>
           </div>

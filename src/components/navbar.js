@@ -123,7 +123,11 @@ export default function Navbar() {
               </Link>
             </li>
             <li className='w-full text-left py-2 md:px-4'>
-              <Link to='/pricing' className='hover:text-gray-500'>
+              <Link
+                to='/pricing'
+                onClick={toggleMenu}
+                className='hover:text-gray-500'
+              >
                 Pricing
               </Link>
             </li>
