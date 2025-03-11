@@ -51,6 +51,7 @@ export default function Pricing() {
                     alt='Img-cover'
                   />
                 </div>
+                {/* content needs to be changed */}
                 <div className='flex flex-col flex-nowrap'>
                   <div className='flex-col flex-nowrap relative '>
                     <h1 className='text-xl font-semibold'>
