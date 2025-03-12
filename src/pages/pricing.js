@@ -55,7 +55,7 @@ export default function Pricing() {
                 <div className='flex flex-col flex-nowrap'>
                   <div className='flex-col flex-nowrap relative '>
                     <h1 className='text-xl font-semibold'>
-                      <span>Ask questions naturally</span>
+                      <span>Basic</span>
                     </h1>
                     <p className='text-base leading-6'>
                       Make form-filling feel effortless by replacing walls of
@@ -79,7 +79,7 @@ export default function Pricing() {
                 <div className='flex flex-col flex-nowrap'>
                   <div className='flex-col flex-nowrap relative '>
                     <h1 className='text-xl font-semibold'>
-                      <span>Match your brand</span>
+                      <span>Plus</span>
                     </h1>
                     <p>
                       From logos to colors, upload your brand assets to
@@ -103,7 +103,7 @@ export default function Pricing() {
                 <div className='flex flex-col flex-nowrap'>
                   <div className='flex-col flex-nowrap relative '>
                     <h1 className='text-xl font-semibold'>
-                      <span>Adapt in real time</span>
+                      <span>Business</span>
                     </h1>
                     <p>
                       Treat everyone as individuals so they feel encouraged to
