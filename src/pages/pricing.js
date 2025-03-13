@@ -57,11 +57,7 @@ export default function Pricing() {
                     <h1 className='text-xl font-semibold'>
                       <span>Basic</span>
                     </h1>
-                    <p className='text-base leading-6'>
-                      Make form-filling feel effortless by replacing walls of
-                      questions with just one at a time. By mirroring a real
-                      conversation, you get more engagement.
-                    </p>
+                    <p className='text-base leading-6'></p>
                   </div>
                 </div>
               </div>
@@ -81,11 +77,7 @@ export default function Pricing() {
                     <h1 className='text-xl font-semibold'>
                       <span>Plus</span>
                     </h1>
-                    <p>
-                      From logos to colors, upload your brand assets to
-                      customize forms in a click. When they’re instantly
-                      recognizable, people trust that it’s really you.
-                    </p>
+                    <p></p>
                   </div>
                 </div>
               </div>
