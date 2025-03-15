@@ -57,7 +57,11 @@ export default function Pricing() {
                     <h1 className='text-xl font-semibold'>
                       <span>Basic</span>
                     </h1>
-                    <p className='text-base leading-6'></p>
+                    <p className='text-base leading-6'>
+                      Treat everyone as individuals so they feel encouraged to
+                      fill out your form. Call form takers by their name and ask
+                      follow-up questions based on their answers.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -77,7 +81,11 @@ export default function Pricing() {
                     <h1 className='text-xl font-semibold'>
                       <span>Plus</span>
                     </h1>
-                    <p></p>
+                    <p>
+                      Treat everyone as individuals so they feel encouraged to
+                      fill out your form. Call form takers by their name and ask
+                      follow-up questions based on their answers.
+                    </p>
                   </div>
                 </div>
               </div>
