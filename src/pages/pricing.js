@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import BrandCarousel from '../components/brandCarousel'
-import content from '../images/version1.png'
+// import content from '../images/version1.png'
 export default function Pricing() {
   return (
     <div className='bg-white pt-[120px]'>

@@ -63,13 +63,13 @@ export default function SignUp() {
     })
     return () => unsubscribe() // Cleanup function on component unmount
   }, [navigate])
-  const resendVerificationEmail = async () => {
-    const user = auth.currentUser
-    if (user && !user.emailVerified) {
-      await sendEmailVerification(user)
-      setMessage('Verification email resent. Please check your email')
-    }
-  }
+  // const resendVerificationEmail = async () => {
+  //   const user = auth.currentUser
+  //   if (user && !user.emailVerified) {
+  //     await sendEmailVerification(user)
+  //     setMessage('Verification email resent. Please check your email')
+  //   }
+  // }
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
